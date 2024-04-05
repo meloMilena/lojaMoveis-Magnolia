@@ -1,6 +1,6 @@
 # Loja Magnolia
 
-A Loja Magnolia é uma loja de móveis desktop que oferece uma variedade de produtos para seus clientes. Abaixo estão os detalhes dos cadastros, processos e tecnologias utilizadas no projeto:
+A Loja Magnolia é uma loja de móveis desktop que oferece uma variedade de produtos para seus clientes. Abaixo estão os detalhes dos cadastros, processos e tecnologias utilizadas no projeto
 
 ## Cadastros
 
