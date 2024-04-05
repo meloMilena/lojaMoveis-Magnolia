@@ -12,8 +12,8 @@ A Loja Magnolia é uma loja de móveis desktop que oferece uma variedade de prod
 
 ## Processos
 
-- **Registrar Pedido:** Este processo envolve a criação e registro de novos pedidos dos clientes. Ele inclui a seleção de produtos, informações do cliente e outras informações relevantes para concluir o pedido.
-- **Monitor de Pedidos:** Este processo é responsável por monitorar o status dos pedidos em andamento. Ele permite que os funcionários e gerentes acompanhem o progresso dos pedidos e forneçam atualizações aos clientes conforme necessário.
+- **Registrar Pedido:** Este processo envolve a criação e registro de novos pedidos dos clientes. 
+- **Monitor de Pedidos:** Este processo é responsável por monitorar e alterar o status dos pedidos em andamento.
 
 ## Tecnologias
 
