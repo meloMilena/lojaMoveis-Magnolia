@@ -3,24 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javafx.classe;
+package javafx.domain;
 
 /**
  *
  * @author DevChefMio
  */
-public class Funcionario {
+public class Cliente {
+    private int idCliente;
     private Pessoa pessoa;
-    private int idFuncionario;
-    private double salario;
-    private String status;
 
-    public Funcionario(int idPessoa, String nome, String email, String cpf, String telefone, int idFuncionario,
-            double salario, String status, Endereco endereco) {
+    public Cliente(int idPessoa, String nome, String email, String cpf, String telefone, int idCliente,
+            Endereco endereco) {
+        this.idCliente = idCliente;
         this.pessoa = new Pessoa(idPessoa, nome, email, cpf, telefone, endereco);
-        this.idFuncionario = idFuncionario;
-        this.salario = salario;
-        this.status = status;
     }
 
     public Pessoa getPessoa() {
@@ -75,19 +71,11 @@ public class Funcionario {
         pessoa.setTelefone(telefone);
     }
 
-    public int getIdFuncionario() {
-        return idFuncionario;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdFuncionario(int idFuncionario) {
-        this.idFuncionario = idFuncionario;
-    }
-
-    public double getSalario() {
-        return salario;
-    }
-
-    public void setSalario(double salario) {
-        this.salario = salario;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 }
