@@ -1,4 +1,13 @@
+<<<<<<< HEAD:src/javafx/classe/Funcionario.java
 package javafx.classe;
+=======
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javafx.domain;
+>>>>>>> dc6e608e48fe0d5d9da9adf0fe2e487435f053d9:src/javafx/domain/Funcionario.java
 
 public class Funcionario {
     private Pessoa pessoa;

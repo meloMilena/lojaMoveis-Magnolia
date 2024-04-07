@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Loja-Magnolia.jnlp">
   <information>
@@ -19,3 +20,23 @@
   <jfx:javafx-desc  width="800" height="600" main-class="javafx.Main"  name="Loja-Magnolia" />
   <update check="always"/>
 </jnlp>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Loja-Magnolia.jnlp">
+  <information>
+    <title>Loja-Magnolia</title>
+    <vendor>DevChefMio</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Loja-Magnolia.jar" size="1203424" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Loja-Magnolia" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="javafx.Main"  name="Loja-Magnolia" />
+  <update check="always"/>
+</jnlp>
+>>>>>>> dc6e608e48fe0d5d9da9adf0fe2e487435f053d9
