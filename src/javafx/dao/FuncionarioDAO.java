@@ -1,8 +1,8 @@
 package javafx.dao;
 
-import javafx.classe.Endereco;
-import javafx.classe.Funcionario;
-import javafx.classe.Pessoa;
+import javafx.domain.Endereco;
+import javafx.domain.Funcionario;
+import javafx.domain.Pessoa;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.classe.Cliente;
+import javafx.domain.Cliente;
 
 public class FuncionarioDAO {
     

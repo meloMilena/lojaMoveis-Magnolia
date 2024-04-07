@@ -10,7 +10,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.classe.Funcionario;
+import javafx.domain.Funcionario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.dao.FuncionarioDAO;
