@@ -7,25 +7,16 @@ public class Funcionario {
     private int idFuncionario;
     private double salario;
     private Endereco endereco;
-    private Cliente clienteFuncionario;
+    private int idPessoa;
     
     public Funcionario(){
     } 
     
     public Funcionario(int idPessoa, String nome, String email, String cpf, String telefone, int idFuncionario,
-        double salario, Endereco endereco, Cliente clienteFuncionario) {
+        double salario, Endereco endereco) {
         this.pessoa = new Pessoa(idPessoa, nome, email, cpf, telefone, endereco);
         this.idFuncionario = idFuncionario;
         this.salario = salario;
-        this.clienteFuncionario = clienteFuncionario;
-    }
-    
-    public Cliente getClienteFuncionario() {
-        return clienteFuncionario;
-    }
-
-    public void setClienteFuncionario(Cliente clienteFuncionario) {
-        this.clienteFuncionario = clienteFuncionario;
     }
 
     public Pessoa getPessoa() {
@@ -33,7 +24,7 @@ public class Funcionario {
     }
 
     public int getIdPessoa() {
-        return pessoa.getIdPessoa();
+        return idPessoa;
     }
 
     public Endereco getEndereco() {
@@ -45,7 +36,11 @@ public class Funcionario {
     }
 
     public void setIdPessoa(int idPessoa) {
-        pessoa.setIdPessoa(idPessoa);
+        this.idPessoa = idPessoa;
+    }
+    
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     public String getNome() {

@@ -26,12 +26,11 @@ public class FuncionarioDAO {
     }
 
     public boolean inserir(Funcionario funcionario) {
-        String sql = "INSERT INTO funcionario (salario, pessoa_funcionario, cliente_funcionario) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO funcionario (salario, pessoa_funcionario) VALUES (?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setDouble(1, funcionario.getSalario());
-            stmt.setInt(3, funcionario.getPessoa().getIdPessoa());
-            stmt.setInt(4, funcionario.getClienteFuncionario().getIdCliente());
+            stmt.setInt(2, funcionario.getIdPessoa());
             stmt.execute();
             return true;
         } catch (SQLException ex) {
@@ -40,13 +39,13 @@ public class FuncionarioDAO {
         }
     }
 
+
     public boolean alterar(Funcionario funcionario) {
-        String sql = "UPDATE funcionario SET salario=?, pessoa_funcionario=?, cliente_funcionario=? WHERE id_funcionario=?";
+        String sql = "UPDATE funcionario SET salario=?, pessoa_funcionario=?, WHERE id_funcionario=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setDouble(1, funcionario.getSalario());
             stmt.setInt(3, funcionario.getPessoa().getIdPessoa());
-            stmt.setInt(4, funcionario.getClienteFuncionario().getIdCliente());
             stmt.setInt(5, funcionario.getIdFuncionario());
             stmt.execute();
             return true;
@@ -56,11 +55,11 @@ public class FuncionarioDAO {
         }
     }
     
-       public List<Funcionario> listar() {
-String sql = "SELECT f.*, p.*, e.*, c.* FROM funcionario f " +
-             "INNER JOIN pessoa p ON f.pessoa_funcionario = p.id_pessoa " +
-             "INNER JOIN endereco e ON p.endereco_pessoa = e.id_endereco " +
-             "INNER JOIN cliente c ON f.cliente_funcionario = c.id_cliente";
+public List<Funcionario> listar() {
+    String sql = "SELECT * " +
+                 "FROM endereco AS e " +
+                 "JOIN pessoa AS p ON e.id_endereco = p.endereco_pessoa " +
+                 "JOIN funcionario AS f ON p.id_pessoa = f.pessoa_funcionario";
 
     List<Funcionario> funcionarios = new ArrayList<>();
     try {
@@ -80,12 +79,12 @@ String sql = "SELECT f.*, p.*, e.*, c.* FROM funcionario f " +
             String rua = rs.getString("rua");
             int numero = rs.getInt("numero");
             String complemento = rs.getString("complemento");
-            int idCliente = rs.getInt("id_cliente");
-            Cliente cliente = new Cliente();
-          
+
             Endereco endereco = new Endereco(idEndereco, cep, bairro, rua, numero, complemento);
-       
-            Funcionario funcionario = new Funcionario(idPessoa, nome, email, cpf, telefone, idFuncionario, salario, endereco, cliente);
+
+            Funcionario funcionario = new Funcionario(idPessoa, nome, email, cpf, telefone, idFuncionario, salario, endereco);
+         
+            
             funcionarios.add(funcionario);
         }
     } catch (SQLException ex) {
@@ -93,5 +92,7 @@ String sql = "SELECT f.*, p.*, e.*, c.* FROM funcionario f " +
     }
     return funcionarios;
 }
+
+
 
 }

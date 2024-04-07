@@ -1,16 +1,3 @@
-
- Conversa aberta. Uma mensagem lida.
-
-Pular para o conteúdo
-Como usar o Gmail com leitores de tela
-in:sent 
-1 de 246
-banco - magnolia
-
-Mirielle Rosa <miri1313mi@gmail.com>
-23:01 (há 1 hora)
-para melolinhares73
-
 CREATE TABLE admin(
  id_admin   SERIAL        NOT NULL,
  nome       VARCHAR(35)   NOT NULL,
@@ -120,12 +107,9 @@ CREATE TABLE funcionario (
  id_funcionario      SERIAL      NOT NULL,
  salario             NUMERIC     NOT NULL,
  pessoa_funcionario  INTEGER     NOT NULL,
- cliente_funcionario INTEGER   
  CONSTRAINT pk_funcionario PRIMARY KEY (id_funcionario),
  CONSTRAINT fk_pessoa_funcionario FOREIGN KEY (pessoa_funcionario)
-    REFERENCES pessoa (id_pessoa),
- CONSTRAINT fk_cliente_funcionario FOREIGN KEY (cliente_funcionario)
-    REFERENCES cliente (id_cliente)
+    REFERENCES pessoa (id_pessoa)
 );
 
 CREATE TABLE item_pedido (
@@ -221,9 +205,9 @@ INSERT INTO cliente (pessoa_cliente) VALUES
 (1),
 (2);
 
-INSERT INTO funcionario (salario, status, pessoa_funcionario, cliente_funcionario) VALUES
-(3000.00, 'Ativo', 1, 1),
-(3500.00, 'Inativo', 2, 2);
+INSERT INTO funcionario (salario, pessoa_funcionario) VALUES
+(3000.00, 1),
+(3500.00, 2);
 
 INSERT INTO item_pedido (quantidade, preco, produto_pedido) VALUES
 (2, 100.00, 1),

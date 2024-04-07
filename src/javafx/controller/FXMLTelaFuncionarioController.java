@@ -14,12 +14,15 @@ import javafx.domain.Funcionario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.dao.FuncionarioDAO;
+import javafx.domain.Endereco;
+import javafx.domain.Pessoa;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.model.database.Database;
 import javafx.model.database.DatabaseFactory;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -72,17 +75,20 @@ public class FXMLTelaFuncionarioController implements Initializable {
         tableViewFuncionario.setItems(observableListFuncionario);
     }
      
-     @FXML
-    public void handleButtonInserir() throws IOException {
-        Funcionario funcionario = new Funcionario();
-        boolean buttonConfirmarClicked = showFXMLCadastroFuncionarioDialog(funcionario);
-        if (buttonConfirmarClicked) {
+ @FXML
+public void handleButtonInserir() throws IOException {
+    Funcionario funcionario = new Funcionario();
+    Pessoa pessoa = new Pessoa();
+    Endereco endereco = new Endereco();
+    boolean buttonConfirmarClicked = FXMLCadastroFuncionarioController(funcionario, pessoa, endereco);
+    if (buttonConfirmarClicked) {
             funcionarioDAO.inserir(funcionario);
             carregarTableViewFuncionarios();
         }
     }
+
     
-     public boolean showFXMLCadastroFuncionarioDialog(Funcionario funcionario) throws IOException {
+     public boolean FXMLCadastroFuncionarioController(Funcionario funcionario, Pessoa pessoa, Endereco endereco) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(FXMLCadastroFuncionarioController.class.getResource("/javafx/view/FXMLCadastroFuncionario.fxml"));
         AnchorPane page = (AnchorPane) loader.load();
@@ -97,7 +103,7 @@ public class FXMLTelaFuncionarioController implements Initializable {
         // Setando o cliente no Controller.
         FXMLCadastroFuncionarioController controller = loader.getController();
         controller.setDialogStage(dialogStage);
-        controller.setFuncionario(funcionario);
+        controller.setFuncionario(funcionario, pessoa, endereco);
 
         // Mostra o Dialog e espera até que o usuário o feche
         dialogStage.showAndWait();
