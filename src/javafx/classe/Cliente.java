@@ -19,6 +19,10 @@ public class Cliente {
         this.pessoa = new Pessoa(idPessoa, nome, email, cpf, telefone, endereco);
     }
 
+    public Cliente() {
+       
+    }
+
     public Pessoa getPessoa() {
         return pessoa;
     }

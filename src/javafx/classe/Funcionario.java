@@ -1,26 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javafx.classe;
 
-/**
- *
- * @author DevChefMio
- */
 public class Funcionario {
     private Pessoa pessoa;
     private int idFuncionario;
     private double salario;
-    private String status;
-
+    private Endereco endereco;
+    private Cliente clienteFuncionario;
+    
+    public Funcionario(){
+    } 
+    
     public Funcionario(int idPessoa, String nome, String email, String cpf, String telefone, int idFuncionario,
-            double salario, String status, Endereco endereco) {
+        double salario, Endereco endereco, Cliente clienteFuncionario) {
         this.pessoa = new Pessoa(idPessoa, nome, email, cpf, telefone, endereco);
         this.idFuncionario = idFuncionario;
         this.salario = salario;
-        this.status = status;
+        this.clienteFuncionario = clienteFuncionario;
+    }
+    
+    public Cliente getClienteFuncionario() {
+        return clienteFuncionario;
+    }
+
+    public void setClienteFuncionario(Cliente clienteFuncionario) {
+        this.clienteFuncionario = clienteFuncionario;
     }
 
     public Pessoa getPessoa() {
@@ -32,11 +35,11 @@ public class Funcionario {
     }
 
     public Endereco getEndereco() {
-        return pessoa.getEndereco();
+        return endereco;
     }
 
     public void setEndereco(Endereco endereco) {
-        pessoa.setEndereco(endereco);
+        this.endereco = endereco;
     }
 
     public void setIdPessoa(int idPessoa) {
