@@ -1,0 +1,58 @@
+
+.table-view{
+    -fx-background-color:transparent;
+    -fx-border-color: #2B2B2B;
+    -fx-padding:0px;
+}
+.table-view .table-column{
+    -fx-alignment:CENTER;
+     -fx-font-size:16px;
+    -fx-font-family: "Segoe UI Light";
+}
+.table-view .column-header-background{
+    -fx-background-color: #2B2B2B;
+    -f-background-radius:8px 8px 0px 0px;
+}
+.table-view .column-header, .filter{
+    -fx-background-color: transparent;
+    -fx-size:40px;
+}
+.table-view .column-header .label{
+    -fx-text-fill:#fff;
+    -fx-font-size:15px;
+    -fx-font-family: "Segoe UI Light";
+}
+.button-endereco {
+    -fx-text-fill:#000000;
+    -fx-background-color: #FFFFFF;
+    -fx-font-size:15px;
+    -fx-font-family: "Segoe UI Light";
+}
+
+.button-salvar {
+    -fx-text-fill:#fff;
+    -fx-background-color: #2B2B2B;
+    -fx-font-size:16px;
+    -fx-background-radius:8px;
+    -fx-font-family: "Segoe UI Light";
+}
+
+.button-cancelar {
+    -fx-text-fill:#2B2B2B;
+    -fx-font-size:16px;
+    -fx-border-color: #727272;
+    -fx-border-radius:8px;
+    -fx-font-family: "Segoe UI Light";
+    -fx-background-color: #FFFFFF;
+}
+
+.text-input {
+    -fx-visible: true;
+}
+
+.menu-bar {
+    -fx-font-family: "Segoe UI Light";
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill:#2B2B2B;
+    -fx-padding:0px;
+}    

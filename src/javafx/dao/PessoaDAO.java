@@ -20,11 +20,11 @@ public class PessoaDAO {
     public Connection getConnection() {
         return connection;
     }
-    
+
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
-
+    
     public boolean inserir(Pessoa pessoa) {
         String sql = "INSERT INTO pessoa (nome, email, cpf, telefone, endereco_pessoa) VALUES (?, ?, ?, ?, ?)";
         try {
@@ -34,7 +34,7 @@ public class PessoaDAO {
             stmt.setString(3, pessoa.getCpf());
             stmt.setString(4, pessoa.getTelefone());
             stmt.setInt(5, pessoa.getIdEndereco());
-            stmt.executeUpdate();
+            stmt.execute();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,7 +52,7 @@ public class PessoaDAO {
             stmt.setString(4, pessoa.getTelefone());
             stmt.setInt(5, pessoa.getEndereco().getId());
             stmt.setInt(6, pessoa.getIdPessoa());
-            stmt.executeUpdate();
+            stmt.execute();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);

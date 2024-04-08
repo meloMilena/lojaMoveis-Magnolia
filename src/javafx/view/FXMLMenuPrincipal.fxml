@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="584.0" prefWidth="835.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.controller.FXMLMenuPrincipalController">
+   <children>
+      <BorderPane layoutX="210.0" layoutY="54.0" prefHeight="584.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="64.0" prefWidth="835.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane layoutY="10.0" prefHeight="20.0" prefWidth="835.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <HBox layoutY="28.0" prefHeight="41.0" prefWidth="835.0">
+                     <children>
+                        <Pane prefHeight="42.0" prefWidth="82.0" />
+                        <ImageView fitHeight="42.0" fitWidth="162.0" onMouseClicked="#handleMenuItemCatalogo" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/logo.png" />
+                           </image>
+                        </ImageView>
+                        <MenuBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="42.0" prefWidth="683.0" style="-fx-font-size: 16px;" stylesheets="@../../css/css.css">
+                          <menus>
+                            <Menu fx:id="menuCadastro" mnemonicParsing="false" text="CADASTROS">
+                                 <items>
+                                    <MenuItem fx:id="menuItemFuncionario" mnemonicParsing="false" onAction="#handleMenuItemCadastroFuncionario" styleClass="menu-bar" text="Funcionario" />
+                                 </items>
+                            </Menu>
+                            <Menu fx:id="menuMonitor" mnemonicParsing="false" text="MONITOR DE PEDIDOS" />
+                            <Menu fx:id="menuRegistrarPedido" mnemonicParsing="false" text="REGISTRAR PEDIDO" />
+                              <Menu fx:id="menuCatalogo" mnemonicParsing="false" onAction="#handleMenuItemCatalogo" styleClass="menu-bar" text="CATALOGO" />
+                          </menus>
+                        </MenuBar>
+                        <Pane prefHeight="42.0" prefWidth="78.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane fx:id="anchorPaneCarregar" prefHeight="513.0" prefWidth="46.0" style="-fx-background-color: #2B2B2B;" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -41,12 +41,26 @@ public class FuncionarioDAO {
 
 
     public boolean alterar(Funcionario funcionario) {
-        String sql = "UPDATE funcionario SET salario=?, pessoa_funcionario=?, WHERE id_funcionario=?";
+        String sql = "UPDATE funcionario SET salario=?, pessoa_funcionario=? WHERE id_funcionario=?";
+
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setDouble(1, funcionario.getSalario());
-            stmt.setInt(3, funcionario.getPessoa().getIdPessoa());
-            stmt.setInt(5, funcionario.getIdFuncionario());
+            stmt.setInt(2, funcionario.getPessoa().getIdPessoa());
+            stmt.setInt(3, funcionario.getIdFuncionario());
+            stmt.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    public boolean remover(Funcionario funcionario) {
+        String sql = "DELETE FROM funcionario WHERE id_funcionario=?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, funcionario.getIdFuncionario());
             stmt.execute();
             return true;
         } catch (SQLException ex) {

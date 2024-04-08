@@ -34,7 +34,7 @@ public class EnderecoDAO {
             stmt.setString(3, endereco.getRua());
             stmt.setInt(4, endereco.getNumero());
             stmt.setString(5, endereco.getComplemento());
-            stmt.executeUpdate();
+            stmt.execute();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,7 +52,7 @@ public class EnderecoDAO {
             stmt.setInt(4, endereco.getNumero());
             stmt.setString(5, endereco.getComplemento());
             stmt.setInt(6, endereco.getId());
-            stmt.executeUpdate();
+            stmt.execute();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -65,7 +65,7 @@ public class EnderecoDAO {
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, endereco.getId());
-            stmt.executeUpdate();
+            stmt.execute();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
