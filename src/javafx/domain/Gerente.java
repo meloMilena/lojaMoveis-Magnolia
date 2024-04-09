@@ -10,6 +10,10 @@ public class Gerente {
     private int idGerente;
     private double salario;
     private String status;
+    private int idPessoa;
+    
+    public Gerente(){
+    }
 
     public Gerente(int idPessoa, String nome, String email, String cpf, String telefone, int idGerente, double salario,
             String status, Endereco endereco) {
@@ -24,7 +28,7 @@ public class Gerente {
     }
 
     public int getIdPessoa() {
-        return pessoa.getIdPessoa();
+        return idPessoa;
     }
 
     public Endereco getEndereco() {
@@ -36,7 +40,7 @@ public class Gerente {
     }
 
     public void setIdPessoa(int idPessoa) {
-        pessoa.setIdPessoa(idPessoa);
+        this.idPessoa = idPessoa;
     }
 
     public String getNome() {

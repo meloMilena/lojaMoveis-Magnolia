@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="527.0" prefWidth="835.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../css/css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.controller.FXMLTelaGerenteController">
+   <children>
+      <TableView fx:id="tableViewGerente" layoutX="27.0" layoutY="19.0" prefHeight="439.0" prefWidth="782.0" stylesheets="@../../css/css.css">
+        <columns>
+          <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="tableColumnStatus" prefWidth="75.0" text="Status" />
+            <TableColumn fx:id="tableColumnNome" prefWidth="75.0" text="Nome" />
+            <TableColumn fx:id="tableColumnCPF" prefWidth="75.0" text="CPF" />
+            <TableColumn fx:id="tableColumnEmail" prefWidth="75.0" text="Email" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <GridPane layoutX="513.0" layoutY="464.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="296.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="99.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="104.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="buttonRemover" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" styleClass="button-cancelar" stylesheets="@../../css/css.css" text="Remover" />
+            <Button fx:id="buttonAlterar" mnemonicParsing="false" onAction="#handleButtonAlterar" prefHeight="25.0" prefWidth="91.0" styleClass="button-salvar" stylesheets="@../../css/css.css" text="Alterar" GridPane.columnIndex="1" />
+            <Button fx:id="buttonRegistrar" mnemonicParsing="false" onAction="#handleButtonInserir" prefHeight="25.0" prefWidth="91.0" styleClass="button-salvar" stylesheets="@../../css/css.css" text="Registrar" GridPane.columnIndex="2" />
+            <Button fx:id="buttonRemover1" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleButtonRemover" prefHeight="25.0" prefWidth="91.0" styleClass="button-cancelar" stylesheets="@../../css/css.css" text="Remover" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

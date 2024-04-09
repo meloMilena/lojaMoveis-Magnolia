@@ -32,11 +32,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author DevChefMio
- */
 public class FXMLTelaFuncionarioController implements Initializable {
     @FXML
     private AnchorPane anchorPane;
@@ -72,37 +67,9 @@ public class FXMLTelaFuncionarioController implements Initializable {
         pessoaDAO.setConnection(connection);
         enderecoDAO.setConnection(connection);
         carregarTableViewFuncionarios();
-        
-//        selecionarItemTableViewFuncionarios(null);
-
-        // Listen acionado diante de quaisquer alterações na seleção de itens do TableView
-//        tableViewFuncionario.getSelectionModel().selectedItemProperty().addListener(
-//                (observable, oldValue, newValue);
     }    
     
-//     public void selecionarItemTableViewFuncionarios(Funcionario funcionario) {
-//        if (funcionario != null) {
-//            labelCodigo.setText(String.valueOf(funcionario.getIdFunc()));
-//            labelNome.setText(funcionario.getNome());
-//            labelCPF.setText(funcionario.getCpf());
-//            labelTelefone.setText(funcionario.getTelefone());
-//            labelEmail.setText(funcionario.getEmail());
-//            labelCargo.setText(funcionario.getCargo());
-//            labelSalario.setText(String.valueOf(funcionario.getSalario()));
-//        } else {
-//            labelCodigo.setText("");
-//            labelNome.setText("");
-//            labelCPF.setText("");
-//            labelTelefone.setText("");
-//            labelEmail.setText("");
-//            labelCargo.setText("");
-//            labelSalario.setText("");
-//        }
-//    }
-//    
-//    
-    
-     public void carregarTableViewFuncionarios() {
+    public void carregarTableViewFuncionarios() {
         tableColumnId.setCellValueFactory(new PropertyValueFactory<>("idFuncionario"));
         tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tableColumnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
@@ -158,7 +125,7 @@ public class FXMLTelaFuncionarioController implements Initializable {
     }
 
     
-     public boolean FXMLCadastroFuncionarioController(Funcionario funcionario, Pessoa pessoa, Endereco endereco) throws IOException {
+    public boolean FXMLCadastroFuncionarioController(Funcionario funcionario, Pessoa pessoa, Endereco endereco) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(FXMLCadastroFuncionarioController.class.getResource("/javafx/view/FXMLCadastroFuncionario.fxml"));
         AnchorPane page = (AnchorPane) loader.load();

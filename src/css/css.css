@@ -56,3 +56,7 @@
     -fx-text-fill:#2B2B2B;
     -fx-padding:0px;
 }    
+
+.button-menu:hover {
+    -fx-background-color: #0096C9;
+}

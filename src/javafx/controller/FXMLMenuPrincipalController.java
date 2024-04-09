@@ -30,6 +30,8 @@ public class FXMLMenuPrincipalController implements Initializable {
     private MenuItem menuItemFuncionario;
     @FXML
     private AnchorPane anchorPaneCarregar;
+    @FXML
+    private MenuItem menuItemGerente;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -43,6 +45,12 @@ public class FXMLMenuPrincipalController implements Initializable {
     @FXML
     private void handleMenuItemCadastroFuncionario() throws IOException {
         AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLTelaFuncionario.fxml"));
+        anchorPaneCarregar.getChildren().setAll(a);
+    }
+    
+    @FXML
+    private void handleMenuItemCadastroGerente() throws IOException {
+        AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLTelaGerente.fxml"));
         anchorPaneCarregar.getChildren().setAll(a);
     }
     

@@ -87,12 +87,9 @@ CREATE TABLE gerente (
  salario        NUMERIC     NOT NULL,
  status         VARCHAR(20) NOT NULL,
  pessoa_gerente INTEGER     NOT NULL,
- gerente_admin  INTEGER     NOT NULL,
  CONSTRAINT pk_gerente PRIMARY KEY (id_gerente),
  CONSTRAINT fk_gerente_pessoa FOREIGN KEY (pessoa_gerente)
-    REFERENCES pessoa (id_pessoa),
- CONSTRAINT fk_gerente_admin  FOREIGN KEY (gerente_admin)
-    REFERENCES admin (id_admin)
+    REFERENCES pessoa (id_pessoa)
 );
 
 CREATE TABLE cliente (

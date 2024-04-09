@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Loja-Magnolia.jar" size="1230663" download="eager" />
+    <jar href="Loja-Magnolia.jar" size="1242439" download="eager" />
     <jar href="lib\asm-3.2.jar" size="43401" download="eager" />
     <jar href="lib\groovy-1.7.2.jar" size="4669426" download="eager" />
     <jar href="lib\iText-2.1.7.jar" size="1130070" download="eager" />
