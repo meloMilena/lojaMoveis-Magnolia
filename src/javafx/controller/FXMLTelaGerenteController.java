@@ -61,6 +61,9 @@ public class FXMLTelaGerenteController implements Initializable {
     private final GerenteDAO gerenteDAO = new GerenteDAO();
     private final PessoaDAO pessoaDAO = new PessoaDAO();
     private final EnderecoDAO enderecoDAO = new EnderecoDAO();
+    @FXML
+    private Button buttonRemover1;
+
 
     /**
      * Initializes the controller class.

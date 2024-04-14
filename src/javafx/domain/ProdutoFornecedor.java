@@ -14,6 +14,9 @@ public class ProdutoFornecedor {
     private Produto produto;
     private Fornecedor fornecedor;
     private int quantidade;
+    
+    public ProdutoFornecedor(){
+    }
 
     public ProdutoFornecedor(int idProdutoFornecedor, Produto produto, Fornecedor fornecedor, int quantidade) {
         this.idProdutoFornecedor = idProdutoFornecedor;

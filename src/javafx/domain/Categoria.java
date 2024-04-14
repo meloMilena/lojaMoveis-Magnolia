@@ -20,6 +20,9 @@ public class Categoria {
         this.nome = nome;
     }
 
+    public Categoria() {
+    }
+
     public int getIdCategoria() {
         return idCategoria;
     }
@@ -42,5 +45,10 @@ public class Categoria {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    @Override
+    public String toString() {
+        return this.nome;
     }
 }

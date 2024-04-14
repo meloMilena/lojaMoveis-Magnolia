@@ -61,18 +61,18 @@ public class PessoaDAO {
     }
 
     public int obterUltimoIdInserido() {
-    String sql = "SELECT MAX(id_pessoa) AS ultimo_id FROM pessoa";
-    try {
-        PreparedStatement stmt = connection.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
-        if (rs.next()) {
-            return rs.getInt("ultimo_id");
+        String sql = "SELECT MAX(id_pessoa) AS ultimo_id FROM pessoa";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("ultimo_id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } catch (SQLException ex) {
-        Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        return -1; // Retorna -1 se não houver nenhum ID inserido ou houver algum erro
     }
-    return -1; // Retorna -1 se não houver nenhum ID inserido ou houver algum erro
-}
 
     
     public List<Pessoa> listar() {

@@ -8,6 +8,7 @@ package javafx.domain;
 public class Estoque {
     private int idEstoque;
     private int quantidade;
+    private int idProduto;
     private Produto produto;
 
     public Estoque(int idEstoque, int quantidade, Produto produto) {
@@ -16,12 +17,31 @@ public class Estoque {
         this.produto = produto;
     }
 
+    public Estoque() {
+    }
+
     public int getIdEstoque() {
         return idEstoque;
     }
 
     public void setIdEstoque(int idEstoque) {
         this.idEstoque = idEstoque;
+    }
+    
+     public int getIdProdut() {
+        return idProduto;
+    }
+
+    public void setIdProdut(int idProduto) {
+        this.idProduto = idProduto;
+    }
+    
+    public int getIdProduto() {
+        return idProduto;
+    }
+
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
 
     public int getQuantidade() {

@@ -17,6 +17,21 @@ public class Fornecedor {
     private String cnae;
     private String telefone;
     private String razaoSocial;
+    private Endereco endereco;
+    
+    public Fornecedor() {
+    }
+
+    public Fornecedor(int idFornecedor, String nome, String email, String cnpj, String cnae, String telefone, String razaoSocial, Endereco endereco) {
+        this.idFornecedor = idFornecedor;
+        this.nome = nome;
+        this.email = email;
+        this.cnpj = cnpj;
+        this.cnae = cnae;
+        this.telefone = telefone;
+        this.razaoSocial = razaoSocial;
+        this.endereco = endereco;
+    }
 
     public int getIdFornecedor() {
         return idFornecedor;
@@ -72,6 +87,19 @@ public class Fornecedor {
 
     public void setRazaoSocial(String razaoSocial) {
         this.razaoSocial = razaoSocial;
+    }
+    
+     public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
+    @Override
+    public String toString() {
+        return this.nome;
     }
 
 }

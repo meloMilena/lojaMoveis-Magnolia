@@ -13,17 +13,14 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 
 public class FXMLMenuPrincipalController implements Initializable {
     @FXML
-    private Menu menuCatalogo;
-    @FXML
     private Menu menuRegistrarPedido;
-    @FXML
-    private Menu menuMonitor;
     @FXML
     private Menu menuCadastro;
     @FXML
@@ -32,6 +29,14 @@ public class FXMLMenuPrincipalController implements Initializable {
     private AnchorPane anchorPaneCarregar;
     @FXML
     private MenuItem menuItemGerente;
+    @FXML
+    private Button buttonCatalogo;
+    @FXML
+    private Button buttonMonitor;
+    @FXML
+    private Button buttonRegistrarPedido;
+    @FXML
+    private MenuItem menuItemProduto;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,5 +64,10 @@ public class FXMLMenuPrincipalController implements Initializable {
         AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLCatalogo.fxml"));
         anchorPaneCarregar.getChildren().setAll(a);
     }
-            
+     
+    @FXML
+    private void handleMenuItemProduto() throws IOException {
+        AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLTelaProduto.fxml"));
+        anchorPaneCarregar.getChildren().setAll(a);
+    }
 }

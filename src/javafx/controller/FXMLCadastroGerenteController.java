@@ -35,8 +35,6 @@ import javafx.stage.Stage;
 public class FXMLCadastroGerenteController implements Initializable {
     
     @FXML
-    private Button buttonSalvar;
-    @FXML
     private TextField textFieldNome;
     @FXML
     private TextField textFieldCpf;
@@ -69,6 +67,8 @@ public class FXMLCadastroGerenteController implements Initializable {
     private Gerente gerente;
     private Pessoa pessoa;
     private Endereco endereco;
+    @FXML
+    private Button buttonCancelar;
     
     public Stage getDialogStage() {
         return dialogStage;
@@ -108,8 +108,6 @@ public class FXMLCadastroGerenteController implements Initializable {
     
     @FXML
     public void handleButtonConfirmar() {
-        
-        System.out.println("Entrou");
         if (validarEntradaDeDados()) {
             endereco.setCep(textFieldCep.getText());
             endereco.setBairro(textFieldBairro.getText());

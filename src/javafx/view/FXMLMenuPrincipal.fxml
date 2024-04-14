@@ -49,6 +49,7 @@
                                  <items>
                                     <MenuItem fx:id="menuItemFuncionario" mnemonicParsing="false" onAction="#handleMenuItemCadastroFuncionario" styleClass="menu-bar" text="Funcionario" />
                                     <MenuItem fx:id="menuItemGerente" mnemonicParsing="false" onAction="#handleMenuItemCadastroGerente" styleClass="menu-bar" text="Gerente" />
+                                    <MenuItem fx:id="menuItemProduto" mnemonicParsing="false" onAction="#handleMenuItemProduto" styleClass="menu-bar" text="Produto" />
                                  </items>
                             </Menu>
                             <Menu fx:id="menuRegistrarPedido" mnemonicParsing="false" styleClass="menu-bar" text="RELATÓRIO" />
@@ -60,7 +61,7 @@
             </AnchorPane>
          </top>
          <center>
-            <AnchorPane fx:id="anchorPaneCarregar" prefHeight="513.0" prefWidth="46.0" style="-fx-background-color: #2B2B2B;" BorderPane.alignment="CENTER" />
+            <AnchorPane fx:id="anchorPaneCarregar" prefHeight="513.0" prefWidth="46.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>

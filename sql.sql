@@ -14,7 +14,7 @@ CREATE TABLE categoria (
 
 CREATE TABLE endereco (
  id_endereco SERIAL         NOT NULL,
- cep         VARCHAR(8)     NOT NULL,
+ cep         VARCHAR(10)     NOT NULL,
  bairro      VARCHAR(50)    NOT NULL,
  rua         VARCHAR(50)    NOT NULL,
  numero      INTEGER        NOT NULL,
@@ -58,18 +58,23 @@ CREATE TABLE produto_fornecedor (
 );
 
 CREATE TABLE produto (
- id_produto         SERIAL          NOT NULL,
- nome               VARCHAR(50)     NOT NULL,
- preco              NUMERIC         NOT NULL,
- peso               NUMERIC         NOT NULL,
- tamanho            VARCHAR(20)     NOT NULL,
- cod_barras         VARCHAR(35)     NOT NULL,
- cor                VARCHAR(30)     NOT NULL,
- marca              VARCHAR(50)     NOT NULL,
- prod_fornecedor    INTEGER         NOT NULL,
- CONSTRAINT pk_produto PRIMARY KEY (id_produto),
- CONSTRAINT fk_produto_fornecedor FOREIGN KEY (prod_fornecedor)
-    REFERENCES produto_fornecedor (id_produto_fornecedor)
+    id_produto         SERIAL          NOT NULL,
+    nome               VARCHAR(50)     NOT NULL,
+    preco              NUMERIC         NOT NULL,
+    peso               NUMERIC         NOT NULL,
+    url_imagem         VARCHAR(50)     NOT NULL,
+    tamanho            VARCHAR(20)     NOT NULL,
+    cod_barras         VARCHAR(35)     NOT NULL,
+    cor                VARCHAR(30)     NOT NULL,
+    marca              VARCHAR(50)     NOT NULL,
+    descricao          VARCHAR(100)     NOT NULL,
+    prod_fornecedor    INTEGER         NOT NULL,
+    categoria          INTEGER         NOT NULL,
+    CONSTRAINT pk_produto PRIMARY KEY (id_produto),
+    CONSTRAINT fk_produto_fornecedor FOREIGN KEY (prod_fornecedor)
+        REFERENCES produto_fornecedor (id_produto_fornecedor),
+    CONSTRAINT fk_produto_categoria FOREIGN KEY (categoria)
+        REFERENCES categoria (id_categoria)
 );
 
 CREATE TABLE estoque (
@@ -153,69 +158,50 @@ CREATE TABLE status (
     descricao VARCHAR(50) NOT NULL
 );
 
-INSERT INTO status (descricao) VALUES
-('Em andamento'),
-('Cancelado'),
-('Saiu para Entrega'),
-('Esperando Aprovação');
 
 
-INSERT INTO admin (nome, senha) VALUES
-('admin1', 'senha1'),
-('admin2', 'senha2'),
-('admin3', 'senha3');
 
-INSERT INTO categoria (descricao, nome) VALUES
-('Eletrônicos', 'eletronicos'),
-('Roupas', 'roupas'),
-('Alimentos', 'alimentos');
+INSERT INTO endereco (cep, bairro, rua, numero, complemento) VALUES ('12345-678', 'Centro', 'Rua Principal', 123, 'Ap 101');
+INSERT INTO endereco (cep, bairro, rua, numero, complemento) VALUES ('54321-098', 'Bairro Novo', 'Avenida Secundária', 456, 'Casa');
 
-INSERT INTO endereco (cep, bairro, rua, numero, complemento) VALUES
-('12345678', 'Centro', 'Rua A', 123, 'Apartamento 101'),
-('87654321', 'Jardim', 'Rua B', 456, 'Casa 2');
+INSERT INTO admin (nome, senha) VALUES ('admin1', 'senha1');
+INSERT INTO admin (nome, senha) VALUES ('admin2', 'senha2');
 
-INSERT INTO pessoa (nome, email, cpf, telefone, endereco_pessoa) VALUES
-('João Silva', 'joao@example.com', '12345678901', '999999999', 1),
-('Maria Souza', 'maria@example.com', '98765432109', '888888888', 2);
+INSERT INTO categoria (descricao, nome) VALUES ('Eletrônicos', 'Eletrônicos');
+INSERT INTO categoria (descricao, nome) VALUES ('Roupas', 'Roupas');
 
-INSERT INTO fornecedor (nome, email, cnpj, cnae, telefone, razao_social, endereco_fornecedor) VALUES
-('Fornecedor A', 'fornecedorA@example.com', '12345678901234', '1234567', '111111111', 'Razão Social A', 1),
-('Fornecedor B', 'fornecedorB@example.com', '98765432109876', '7654321', '222222222', 'Razão Social B', 2);
+INSERT INTO pessoa (nome, email, cpf, telefone, endereco_pessoa) VALUES ('João', 'joao@example.com', '12345678901', '123456789', 1);
+INSERT INTO pessoa (nome, email, cpf, telefone, endereco_pessoa) VALUES ('Maria', 'maria@example.com', '98765432109', '987654321', 2);
 
-INSERT INTO produto_fornecedor (quantidade, fornecedor_prod) VALUES
-(100, 1),
-(200, 2);
+INSERT INTO fornecedor (nome, email, cnpj, cnae, telefone, razao_social, endereco_fornecedor) VALUES ('Fornecedor 1', 'fornecedor1@example.com', '12345678901234', '1234567', '987654321', 'Razão Social 1', 1);
+INSERT INTO fornecedor (nome, email, cnpj, cnae, telefone, razao_social, endereco_fornecedor) VALUES ('Fornecedor 2', 'fornecedor2@example.com', '98765432109876', '7654321', '123456789', 'Razão Social 2', 2);
 
-INSERT INTO produto (nome, preco, peso, tamanho, cod_barras, cor, marca, prod_fornecedor) VALUES
-('Produto A', 50.00, 0.5, 'M', '123456789', 'Azul', 'Marca A', 1),
-('Produto B', 100.00, 1.0, 'G', '987654321', 'Vermelho', 'Marca B', 2);
+INSERT INTO produto_fornecedor (quantidade, fornecedor_prod) VALUES (50, 1);
+INSERT INTO produto_fornecedor (quantidade, fornecedor_prod) VALUES (30, 2);
 
-INSERT INTO estoque (quantidade, prod_estoque) VALUES
-(50, 1),
-(150, 2);
+INSERT INTO produto (nome, preco, peso, url_imagem, tamanho, cod_barras, cor, marca, descricao, prod_fornecedor, categoria) VALUES ('Celular', 1000.00, 0.2, 'valor_padrão.png', '15x7x0.5', '123456789012', 'Preto', 'Marca X', 'Celular smartphone', 1, 1);
+INSERT INTO produto (nome, preco, peso, url_imagem, tamanho, cod_barras, cor, marca, descricao, prod_fornecedor, categoria) VALUES ('Camiseta', 29.99, 0.3, 'valor_padrão.png', 'M', '987654321098', 'Branca', 'Marca Y', 'Camiseta de algodão', 2, 2);
 
-INSERT INTO gerente (salario, status, pessoa_gerente, gerente_admin) VALUES
-(5000.00, 'Ativo', 1, 1),
-(6000.00, 'Inativo', 2, 2);
+INSERT INTO estoque (quantidade, prod_estoque) VALUES (50, 1);
+INSERT INTO estoque (quantidade, prod_estoque) VALUES (30, 2);
 
-INSERT INTO cliente (pessoa_cliente) VALUES
-(1),
-(2);
+INSERT INTO gerente (salario, status, pessoa_gerente) VALUES (5000.00, 'Ativo', 1);
+INSERT INTO gerente (salario, status, pessoa_gerente) VALUES (6000.00, 'Ativo', 2);
 
-INSERT INTO funcionario (salario, pessoa_funcionario) VALUES
-(3000.00, 1),
-(3500.00, 2);
+INSERT INTO cliente (pessoa_cliente) VALUES (1);
+INSERT INTO cliente (pessoa_cliente) VALUES (2);
 
-INSERT INTO item_pedido (quantidade, preco, produto_pedido) VALUES
-(2, 100.00, 1),
-(3, 150.00, 2);
+INSERT INTO funcionario (salario, pessoa_funcionario) VALUES (3000.00, 1);
+INSERT INTO funcionario (salario, pessoa_funcionario) VALUES (3500.00, 2);
 
-INSERT INTO pedido (valor_total, data_entrega, cpf, data, contato, item_ped, funcionario_pedido, categoria_pedido) VALUES
-(200.00, '2024-04-10', '12345678901', '2024-04-05', 'cliente1@example.com', 1, 1, 1),
-(450.00, '2024-04-12', '98765432109', '2024-04-06', 'cliente2@example.com', 2, 2, 2);
+INSERT INTO item_pedido (quantidade, preco, produto_pedido) VALUES (2, 2000.00, 1);
+INSERT INTO item_pedido (quantidade, preco, produto_pedido) VALUES (3, 89.97, 2);
 
-INSERT INTO status_pedido (status_pedido, pedido_numero) VALUES
-('Em andamento', 1),
-('Concluído', 2);
+INSERT INTO pedido (valor_total, data_entrega, cpf, data, contato, item_ped, funcionario_pedido, categoria_pedido) VALUES (4000.00, '2024-04-15', '12345678901', '2024-04-10', 'cliente1@example.com', 1, 1, 1);
+INSERT INTO pedido (valor_total, data_entrega, cpf, data, contato, item_ped, funcionario_pedido, categoria_pedido) VALUES (269.91, '2024-04-20', '98765432109', '2024-04-11', 'cliente2@example.com', 2, 2, 2);
 
+INSERT INTO status_pedido (status_pedido, pedido_numero) VALUES ('Em processamento', 1);
+INSERT INTO status_pedido (status_pedido, pedido_numero) VALUES ('Enviado', 2);
 
+INSERT INTO status (descricao) VALUES ('Ativo');
+INSERT INTO status (descricao) VALUES ('Inativo');
