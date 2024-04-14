@@ -18,6 +18,7 @@ import javafx.dao.FuncionarioDAO;
 import javafx.dao.PessoaDAO;
 import javafx.domain.Endereco;
 import javafx.domain.Pessoa;
+import javafx.domain.ProdutoFornecedor;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -97,7 +98,13 @@ public class FXMLTelaFuncionarioController implements Initializable {
     public void handleButtonRemover() throws IOException {
         Funcionario funcionario = tableViewFuncionario.getSelectionModel().getSelectedItem();
         if (funcionario != null) {
+            int idFuncionario = funcionario.getIdPessoa();
+            
+            Pessoa pessoa = new Pessoa();
+            pessoa.setIdPessoa(idFuncionario);
             funcionarioDAO.remover(funcionario);
+            pessoaDAO.remover(funcionario.getPessoa());
+//            enderecoDAO.remover(pessoa.getEndereco());
             carregarTableViewFuncionarios();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

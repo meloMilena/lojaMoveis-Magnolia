@@ -194,7 +194,6 @@ public class FXMLCadastroProdutoController implements Initializable {
             } 
               
             ProdutoFornecedor novoProdutoFornecedor = new ProdutoFornecedor();
-//            Produto novoProduto = new Produto();
 
             novoProdutoFornecedor.setQuantidade(Integer.parseInt(textFieldQuantidade.getText())); 
             novoProdutoFornecedor.setFornecedor(comboBoxFornecedor.getValue());
@@ -227,7 +226,6 @@ public class FXMLCadastroProdutoController implements Initializable {
                         buttonConfirmarClicked = true;
                         dialogStage.close();
                     }
-                   
                 }
             }
         }

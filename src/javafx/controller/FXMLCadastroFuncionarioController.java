@@ -107,82 +107,81 @@ public class FXMLCadastroFuncionarioController implements Initializable {
         return buttonConfirmarClicked;
     }
     
-@FXML
-public void handleButtonConfirmar() throws ParseException {
-    if (validarEntradaDeDados()) {
-        endereco.setCep(textFieldCep.getText());
-        endereco.setBairro(textFieldBairro.getText());
-        endereco.setRua(textFieldRua.getText());
-        endereco.setNumero(Integer.parseInt(textFieldNumero.getText()));
-        endereco.setComplemento(textFieldComplemento.getText());
-        
-        if (enderecoDAO.inserir(endereco)) {
-            int idEndereco = enderecoDAO.obterUltimoIdInserido();
-            
-            pessoa.setNome(textFieldNome.getText());
-            pessoa.setCpf(textFieldCpf.getText());
-            pessoa.setTelefone(textFieldTelefone.getText());
-            pessoa.setEmail(textFieldEmail.getText());
-            pessoa.setIdEndereco(idEndereco);
-            
-            if (pessoaDAO.inserir(pessoa)) {
-                int idPessoa = pessoaDAO.obterUltimoIdInserido();
-                
-                funcionario.setSalario(Double.parseDouble(textFieldSalario.getText()));
-                funcionario.setIdPessoa(idPessoa);
-                buttonConfirmarClicked = true;
-                dialogStage.close();
-                
+    @FXML
+    public void handleButtonConfirmar() throws ParseException {
+        if (validarEntradaDeDados()) {
+            endereco.setCep(textFieldCep.getText());
+            endereco.setBairro(textFieldBairro.getText());
+            endereco.setRua(textFieldRua.getText());
+            endereco.setNumero(Integer.parseInt(textFieldNumero.getText()));
+            endereco.setComplemento(textFieldComplemento.getText());
+
+            if (enderecoDAO.inserir(endereco)) {
+                int idEndereco = enderecoDAO.obterUltimoIdInserido();
+
+                pessoa.setNome(textFieldNome.getText());
+                pessoa.setCpf(textFieldCpf.getText());
+                pessoa.setTelefone(textFieldTelefone.getText());
+                pessoa.setEmail(textFieldEmail.getText());
+                pessoa.setIdEndereco(idEndereco);
+
+                if (pessoaDAO.inserir(pessoa)) {
+                    int idPessoa = pessoaDAO.obterUltimoIdInserido();
+
+                    funcionario.setSalario(Double.parseDouble(textFieldSalario.getText()));
+                    funcionario.setIdPessoa(idPessoa);
+                    buttonConfirmarClicked = true;
+                    dialogStage.close();
+
+                } else {
+                    // Exibir mensagem de erro se a inserção da pessoa falhar
+                    exibirErro("Falha ao inserir pessoa", "Ocorreu um erro ao inserir a pessoa. Por favor, tente novamente.");
+                }
             } else {
-                // Exibir mensagem de erro se a inserção da pessoa falhar
-                exibirErro("Falha ao inserir pessoa", "Ocorreu um erro ao inserir a pessoa. Por favor, tente novamente.");
+                // Exibir mensagem de erro se a inserção do endereço falhar
+                exibirErro("Falha ao inserir endereço", "Ocorreu um erro ao inserir o endereço. Por favor, tente novamente.");
             }
-        } else {
-            // Exibir mensagem de erro se a inserção do endereço falhar
-            exibirErro("Falha ao inserir endereço", "Ocorreu um erro ao inserir o endereço. Por favor, tente novamente.");
         }
     }
-}
 
-private void exibirErro(String titulo, String mensagem) {
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle("Erro no cadastro");
-    alert.setHeaderText(titulo);
-    alert.setContentText(mensagem);
-    alert.show();
-}
-
-private boolean validarEntradaDeDados() {
-    String errorMessage = "";
-
-    if (textFieldNome.getText() == null || textFieldNome.getText().isEmpty()) {
-        errorMessage += "Nome inválido!\n";
-    }
-    if (textFieldCpf.getText() == null || textFieldCpf.getText().isEmpty()) {
-        errorMessage += "CPF inválido!\n";
-    }
-    if (textFieldTelefone.getText() == null || textFieldTelefone.getText().isEmpty()) {
-        errorMessage += "Telefone inválido!\n";
-    }
-    if (textFieldEmail.getText() == null || textFieldEmail.getText().isEmpty()) {
-        errorMessage += "Email inválido!\n";
-    }
-    if (textFieldSalario.getText() == null || textFieldSalario.getText().isEmpty()) {
-        errorMessage += "Salário inválido!\n";
-    }
-
-    if (errorMessage.isEmpty()) {
-        return true;
-    } else {
-        // Mostrar a mensagem de erro
+    private void exibirErro(String titulo, String mensagem) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erro no cadastro");
-        alert.setHeaderText("Campos inválidos, por favor, corrija...");
-        alert.setContentText(errorMessage);
+        alert.setHeaderText(titulo);
+        alert.setContentText(mensagem);
         alert.show();
-        return false;
     }
-}
 
-    
+        private boolean validarEntradaDeDados() {
+            String errorMessage = "";
+
+            if (textFieldNome.getText() == null || textFieldNome.getText().isEmpty()) {
+                errorMessage += "Nome inválido!\n";
+            }
+            if (textFieldCpf.getText() == null || textFieldCpf.getText().isEmpty()) {
+                errorMessage += "CPF inválido!\n";
+            }
+            if (textFieldTelefone.getText() == null || textFieldTelefone.getText().isEmpty()) {
+                errorMessage += "Telefone inválido!\n";
+            }
+            if (textFieldEmail.getText() == null || textFieldEmail.getText().isEmpty()) {
+                errorMessage += "Email inválido!\n";
+            }
+            if (textFieldSalario.getText() == null || textFieldSalario.getText().isEmpty()) {
+                errorMessage += "Salário inválido!\n";
+            }
+
+            if (errorMessage.isEmpty()) {
+                return true;
+            } else {
+                // Mostrar a mensagem de erro
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro no cadastro");
+                alert.setHeaderText("Campos inválidos, por favor, corrija...");
+                alert.setContentText(errorMessage);
+                alert.show();
+                return false;
+            }
+        }
+
 }

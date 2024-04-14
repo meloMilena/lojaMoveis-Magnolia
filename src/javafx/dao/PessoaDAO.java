@@ -42,6 +42,19 @@ public class PessoaDAO {
         }
     }
     
+      public boolean remover(Pessoa pessoa) {
+        String sql = "DELETE FROM pessoa WHERE id_pessoa=?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, pessoa.getIdPessoa());
+            stmt.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
     public boolean alterar(Pessoa pessoa) {
         String sql = "UPDATE pessoa SET nome=?, email=?, cpf=?, telefone=?, endereco_pessoa=? WHERE id_pessoa=?";
         try {

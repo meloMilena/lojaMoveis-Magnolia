@@ -126,7 +126,6 @@ public class FXMLTelaProdutoController implements Initializable {
         Fornecedor fornecedor = new Fornecedor();
         boolean buttonConfirmarClicked = FXMLCadastroProdutoController(produto, produtoFornecedor, fornecedor);
         if (buttonConfirmarClicked) {
-//            produtoDAO.inserir(produto);
             carregarTableViewProduto();
         }
     }
@@ -181,9 +180,11 @@ public void handleButtonRemover() throws IOException {
     if (produto != null) {
         int idProduto = produto.getIdProduto();
         Estoque estoque = new Estoque();
-        ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor();
         estoque.setIdProduto(idProduto);
+          
+        ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor();
         produtoFornecedor.setIdProdutoFornecedor(idProduto);
+     
         estoqueDAO.remover(estoque);
         produtoDAO.remover(produto);
         produtoFornecedorDAO.remover(produtoFornecedor);
