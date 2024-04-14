@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -37,6 +38,7 @@ public class FXMLMenuPrincipalController implements Initializable {
     private Button buttonRegistrarPedido;
     @FXML
     private MenuItem menuItemProduto;
+    private MenuItem menuItemCliente;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -70,4 +72,11 @@ public class FXMLMenuPrincipalController implements Initializable {
         AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLTelaProduto.fxml"));
         anchorPaneCarregar.getChildren().setAll(a);
     }
+
+    @FXML
+    private void handleMenuItemCadastroCliente(ActionEvent event) throws IOException {
+        AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLTelaCliente.fxml"));
+        anchorPaneCarregar.getChildren().setAll(a);
+    }
+            
 }
