@@ -3,23 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/controller/FXMLTelaGerenteController.java</file>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/controller/FXMLTelaProdutoController.java</file>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/dao/GerenteDAO.java</file>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/Main.java</file>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/view/FXMLTelaProduto.fxml</file>
+            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/view/FXMLCadastroProduto.fxml</file>
+            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/view/FXMLCatalogo.fxml</file>
+            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/view/FXMLTelaVisualizacaoProduto.fxml</file>
+            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/view/FXMLMenuPrincipal.fxml</file>
+            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/controller/FXMLLoginController.java</file>
+            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/controller/FXMLMenuPrincipalController.java</file>
+            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/controller/FXMLCatalogoController.java</file>
             <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/controller/FXMLCadastroProdutoController.java</file>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/dao/EnderecoDAO.java</file>
             <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/domain/Produto.java</file>
             <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/dao/ProdutoFornecedorDAO.java</file>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/controller/FXMLCadastroGerenteController.java</file>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/domain/Categoria.java</file>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/dao/FornecedorDAO.java</file>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/domain/Fornecedor.java</file>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/controller/FXMLCadastroFuncionarioController.java</file>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/dao/CategoriaDAO.java</file>
+            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/view/FXMLTelaCliente.fxml</file>
             <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/dao/ProdutoDAO.java</file>
-            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/domain/ProdutoFornecedor.java</file>
+            <file>file:/C:/Users/DevChefMio/Documents/NetBeansProjects/Loja-Magnolia/src/javafx/controller/FXMLTelaVisualizacaoProdutoController.java</file>
         </group>
     </open-files>
 </project-private>

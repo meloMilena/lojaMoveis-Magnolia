@@ -40,14 +40,17 @@ public class FXMLMenuPrincipalController implements Initializable {
     private MenuItem menuItemProduto;
     private MenuItem menuItemCliente;
 
-    @Override
+   @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             handleMenuItemCatalogo();
         } catch (IOException ex) {
-            Logger.getLogger(FXMLCatalogoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMLMenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }    
+    }
+
             
     @FXML
     private void handleMenuItemCadastroFuncionario() throws IOException {

@@ -56,7 +56,7 @@
 
                                  </items>
                             </Menu>
-                            <Menu fx:id="menuRegistrarPedido" mnemonicParsing="false" styleClass="menu-bar" text="RELATÓRIO" />
+                            <Menu fx:id="menuRegistrarPedido" mnemonicParsing="false" text="RELATÓRIO" />
                           </menus>
                         </MenuBar>
                      </children>

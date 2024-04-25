@@ -22,9 +22,18 @@ public class FXMLTelaVisualizacaoProdutoController implements Initializable {
     private Label labelPrecoProduto;
     @FXML
     private Label labelFornecedorProduto;
+    @FXML
+    private Label labelMarca;
+    @FXML
+    private Label labelTamanho;
+    @FXML
+    private Label labelCodBarras;
+    @FXML
+    private Label labelCategoria;
 
+    
     private Produto produto;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Inicialização do controlador
@@ -37,15 +46,18 @@ public class FXMLTelaVisualizacaoProdutoController implements Initializable {
 
     private void exibirInformacoesProduto() {
         if (produto != null) {
-            // Exibir a imagem do produto
             String imagePath = "src\\imgProduto\\" + produto.getUrlImagem();
             Image image = new Image(new File(imagePath).toURI().toString());
             imagemProduto.setImage(image);
 
-            // Exibir outras informações do produto
             labelNomeProduto.setText(produto.getNome());
             labelDescricaoProduto.setText(produto.getDescricao());
             labelPrecoProduto.setText(String.valueOf(produto.getPreco()));
+            labelMarca.setText(String.valueOf(produto.getMarca()));
+            labelTamanho.setText(String.valueOf(produto.getTamanho()));
+            labelFornecedorProduto.setText(String.valueOf(produto.getFornecedor().getNome()));
+            labelCategoria.setText(String.valueOf(produto.getCategoria().getNome()));
+            labelCodBarras.setText(String.valueOf(produto.getCodBarras()));
         }
     }
 }

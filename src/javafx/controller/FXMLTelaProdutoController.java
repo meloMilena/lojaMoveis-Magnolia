@@ -155,23 +155,23 @@ public class FXMLTelaProdutoController implements Initializable {
         }
     }
 
-    
     @FXML
-     public void handleButtonAlterar() throws IOException {
-//        Gerente gerente = tableViewGerente.getSelectionModel().getSelectedItem();
-//        if (gerente != null) {
-//            boolean buttonConfirmarClicked = FXMLCadastroGerenteController(gerente, gerente.getPessoa(), gerente.getPessoa().getEndereco());
-//            if (buttonConfirmarClicked) {
-//                pessoaDAO.alterar(gerente.getPessoa());
-//                gerenteDAO.alterar(gerente);
-//                enderecoDAO.alterar(gerente.getPessoa().getEndereco());
-//                carregarTableViewGerentes();
-//            }
-//        } else {
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setContentText("Por favor, escolha um funcionario na Tabela!");
-//            alert.show();
-//        }
+    public void handleButtonAlterar() throws IOException {
+        Produto produto = tableViewProduto.getSelectionModel().getSelectedItem();
+        ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor();
+        Categoria categoria = new Categoria();
+        Fornecedor fornecedor = new Fornecedor();
+        if (produto != null) {
+            boolean buttonConfirmarClicked = FXMLCadastroProdutoController(produto, produtoFornecedor, fornecedor);
+            if (buttonConfirmarClicked) {
+                produtoDAO.alterar(produto.getProduto());
+                carregarTableViewProduto();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Por favor, escolha um funcionario na Tabela!");
+            alert.show();
+        }
     }
      
 @FXML

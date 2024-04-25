@@ -26,6 +26,7 @@ public class Produto {
     private int idFornecedor; 
     private String nomeFornecedor;
     private String urlImagem;
+    private Produto produto;
     
     public Produto(){
     }
@@ -47,6 +48,14 @@ public class Produto {
         this.fornecedor = fornecedor;
         this.idFornecedor = idFornecedor;
         this.nomeFornecedor = nomeFornecedor;
+    }
+    
+     public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     public int getIdProduto() {

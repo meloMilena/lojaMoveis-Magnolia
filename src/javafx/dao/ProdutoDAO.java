@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javafx.domain.Categoria;
 import javafx.domain.Endereco;
 import javafx.domain.Fornecedor;
+import javafx.domain.Gerente;
 import javafx.domain.Produto;
 import javafx.domain.ProdutoFornecedor;
 
@@ -51,7 +52,28 @@ public class ProdutoDAO {
        }
    }
     
+       public boolean alterar(Produto produto) {
+        String sql = "UPDATE produto SET nome=?, preco=?, peso=?, url_imagem=?, tamanho=?, cor=?, marca=?, descricao=?, prod_fornecedor=?, categoria=? WHERE id_produto=?";
 
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, produto.getNome());
+            statement.setDouble(2, produto.getPreco());
+            statement.setDouble(3, produto.getPeso());
+            statement.setString(4, produto.getUrlImagem());
+            statement.setString(5, produto.getTamanho());
+            statement.setString(6, produto.getCor());
+            statement.setString(7, produto.getMarca());
+            statement.setString(8, produto.getDescricao());
+            statement.setInt(9, produto.setIdProdutoFornecedor());
+            statement.setInt(10, produto.getCategoria().getIdCategoria()); 
+            statement.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(GerenteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
  
     public int obterUltimoIdInserido() {
         String sql = "SELECT MAX(id_produto) AS ultimo_id FROM produto";
