@@ -56,6 +56,11 @@
     -fx-visible: true;
 }
 
+.root {
+    -fx-max-width: 800px; /* Defina o valor desejado */
+}
+
+
 .menu-bar {
     -fx-font-family: "Segoe UI Light";
     -fx-background-color: #FFFFFF;

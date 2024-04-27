@@ -161,17 +161,14 @@ CREATE TABLE status (
     descricao VARCHAR(50) NOT NULL
 );
 
-
-
-
 INSERT INTO endereco (cep, bairro, rua, numero, complemento) VALUES ('12345-678', 'Centro', 'Rua Principal', 123, 'Ap 101');
 INSERT INTO endereco (cep, bairro, rua, numero, complemento) VALUES ('54321-098', 'Bairro Novo', 'Avenida Secundária', 456, 'Casa');
 
 INSERT INTO admin (nome, senha) VALUES ('admin1', 'senha1');
 INSERT INTO admin (nome, senha) VALUES ('admin2', 'senha2');
 
-INSERT INTO categoria (descricao, nome) VALUES ('Eletrônicos', 'Eletrônicos');
-INSERT INTO categoria (descricao, nome) VALUES ('Roupas', 'Roupas');
+INSERT INTO categoria (descricao, nome) VALUES ('Sofás', 'Sofás');
+INSERT INTO categoria (descricao, nome) VALUES ('Mesas', 'Mesas');
 
 INSERT INTO pessoa (nome, email, cpf, telefone, endereco_pessoa) VALUES ('João', 'joao@example.com', '12345678901', '123456789', 1);
 INSERT INTO pessoa (nome, email, cpf, telefone, endereco_pessoa) VALUES ('Maria', 'maria@example.com', '98765432109', '987654321', 2);
@@ -182,14 +179,14 @@ INSERT INTO fornecedor (nome, email, cnpj, cnae, telefone, razao_social, enderec
 INSERT INTO produto_fornecedor (quantidade, fornecedor_prod) VALUES (50, 1);
 INSERT INTO produto_fornecedor (quantidade, fornecedor_prod) VALUES (30, 2);
 
-INSERT INTO produto (nome, preco, peso, url_imagem, tamanho, cod_barras, cor, marca, descricao, prod_fornecedor, categoria) VALUES ('Celular', 1000.00, 0.2, 'valor_padrão.png', '15x7x0.5', '123456789012', 'Preto', 'Marca X', 'Celular smartphone', 1, 1);
-INSERT INTO produto (nome, preco, peso, url_imagem, tamanho, cod_barras, cor, marca, descricao, prod_fornecedor, categoria) VALUES ('Camiseta', 29.99, 0.3, 'valor_padrão.png', 'M', '987654321098', 'Branca', 'Marca Y', 'Camiseta de algodão', 2, 2);
+INSERT INTO produto (nome, preco, peso, url_imagem, tamanho, cod_barras, cor, marca, descricao, prod_fornecedor, categoria) VALUES ('Sofá de Couro', 1500.00, 50.0, 'sofa_couro.png', '200x100x80', '123456789012', 'Marrom', 'Marca A', 'Sofá confortável de couro', 1, 1);
+INSERT INTO produto (nome, preco, peso, url_imagem, tamanho, cod_barras, cor, marca, descricao, prod_fornecedor, categoria) VALUES ('Mesa de Jantar', 499.99, 30.0, 'mesa_jantar.png', '160x90x75', '987654321098', 'Madeira', 'Marca B', 'Mesa de jantar elegante', 2, 2);
 
 INSERT INTO estoque (quantidade, prod_estoque) VALUES (50, 1);
 INSERT INTO estoque (quantidade, prod_estoque) VALUES (30, 2);
 
-INSERT INTO gerente (salario, status, pessoa_gerente) VALUES (5000.00, 'Ativo', 1);
-INSERT INTO gerente (salario, status, pessoa_gerente) VALUES (6000.00, 'Ativo', 2);
+INSERT INTO gerente (salario, status, pessoa_gerente, gerente_admin) VALUES (5000.00, 'Ativo', 1, 1);
+INSERT INTO gerente (salario, status, pessoa_gerente, gerente_admin) VALUES (6000.00, 'Ativo', 2, 2);
 
 INSERT INTO cliente (pessoa_cliente) VALUES (1);
 INSERT INTO cliente (pessoa_cliente) VALUES (2);
@@ -197,14 +194,15 @@ INSERT INTO cliente (pessoa_cliente) VALUES (2);
 INSERT INTO funcionario (salario, pessoa_funcionario) VALUES (3000.00, 1);
 INSERT INTO funcionario (salario, pessoa_funcionario) VALUES (3500.00, 2);
 
-INSERT INTO item_pedido (quantidade, preco, produto_pedido) VALUES (2, 2000.00, 1);
-INSERT INTO item_pedido (quantidade, preco, produto_pedido) VALUES (3, 89.97, 2);
+INSERT INTO item_pedido (quantidade, preco, produto_pedido) VALUES (2, 1500.00, 1);
+INSERT INTO item_pedido (quantidade, preco, produto_pedido) VALUES (1, 499.99, 2);
 
-INSERT INTO pedido (valor_total, data_entrega, cpf, data, contato, item_ped, funcionario_pedido, categoria_pedido) VALUES (4000.00, '2024-04-15', '12345678901', '2024-04-10', 'cliente1@example.com', 1, 1, 1);
-INSERT INTO pedido (valor_total, data_entrega, cpf, data, contato, item_ped, funcionario_pedido, categoria_pedido) VALUES (269.91, '2024-04-20', '98765432109', '2024-04-11', 'cliente2@example.com', 2, 2, 2);
+INSERT INTO pedido (valor_total, data_entrega, cpf, data, contato, item_ped, funcionario_pedido, categoria_pedido) VALUES (3000.00, '2024-04-15', '12345678901', '2024-04-10', 'cliente1@example.com', 1, 1, 1);
+INSERT INTO pedido (valor_total, data_entrega, cpf, data, contato, item_ped, funcionario_pedido, categoria_pedido) VALUES (499.99, '2024-04-20', '98765432109', '2024-04-11', 'cliente2@example.com', 2, 2, 2);
 
 INSERT INTO status_pedido (status_pedido, pedido_numero) VALUES ('Em processamento', 1);
 INSERT INTO status_pedido (status_pedido, pedido_numero) VALUES ('Enviado', 2);
 
 INSERT INTO status (descricao) VALUES ('Ativo');
 INSERT INTO status (descricao) VALUES ('Inativo');
+
