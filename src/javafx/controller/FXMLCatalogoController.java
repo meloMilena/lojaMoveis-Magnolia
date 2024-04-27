@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.dao.ProdutoDAO;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.model.database.Database;
 import javafx.model.database.DatabaseFactory;
 import javafx.scene.Node;
@@ -26,8 +28,6 @@ import javafx.stage.Stage;
 
 public class FXMLCatalogoController implements Initializable {
 
-    @FXML
-    private TilePane tilePane;
 
     private final ProdutoDAO produtoDAO = new ProdutoDAO();
     
@@ -41,10 +41,24 @@ public class FXMLCatalogoController implements Initializable {
 
     @FXML
     private ScrollPane scrollPane; // Adicione isso ao seu FXML
+    @FXML
+    private ImageView imageView;
+    @FXML
+    private Label labelNomeProduto;
+    @FXML
+    private Label labelDescricao;
+    @FXML
+    private Button button;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         produtoDAO.setConnection(connection);
+        
+        root.getStylesheets().add(getClass().getResource("/css/css.css").toExternalForm());
+        
+        labelNomeProduto.getStyleClass().add("label-visualizar");
+        labelDescricao.getStyleClass().add("label-visualizar");
+        button.getStyleClass().add("button-add-carrinho");
           
         carregarProdutos();
     }
@@ -52,10 +66,18 @@ public class FXMLCatalogoController implements Initializable {
     private void carregarProdutos() {
         List<Produto> produtos = produtoDAO.listar();
 
+        AnchorPane.setTopAnchor(scrollPane, 0.0);
+        AnchorPane.setBottomAnchor(scrollPane, 0.0);
+        AnchorPane.setLeftAnchor(scrollPane, 0.0);
+        AnchorPane.setRightAnchor(scrollPane, 0.0);
+
+
        // Dentro do método carregarProdutos
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+        GridPane.setMargin(gridPane, new Insets(0, 0, 20, 0));
 
         int rowIndex = 0;
         int columnIndex = 0;
@@ -65,11 +87,11 @@ public class FXMLCatalogoController implements Initializable {
 
             System.out.println("Caminho da imagem: " + imageUrl);
 
-            ImageView imageView = new ImageView(imageUrl);
+            imageView = new ImageView(imageUrl);
             imageView.setFitWidth(150);
             imageView.setFitHeight(150);
 
-            Button button = new Button("Adicionar ao Carrinho");
+            Button button = new Button("Adicionar ao Carriinho");
             button.setOnAction(event -> {
                 Node source = (Node) event.getSource();
                 GridPane parentPane = (GridPane) source.getParent();
@@ -77,16 +99,16 @@ public class FXMLCatalogoController implements Initializable {
                 adicionarAoCarrinho(produtoAtual);
             });
 
-            Label nomeProdutoLabel = new Label(produto.getNome());
-            Label descricaoLabel = new Label(produto.getDescricao());
+            labelNomeProduto = new Label(produto.getNome());
+            labelDescricao = new Label(produto.getDescricao());
 
             gridPane.add(imageView, columnIndex, rowIndex);
-            gridPane.add(nomeProdutoLabel, columnIndex, rowIndex + 1);
-            gridPane.add(descricaoLabel, columnIndex, rowIndex + 2);
+            gridPane.add(labelNomeProduto, columnIndex, rowIndex + 1);
+            gridPane.add(labelDescricao, columnIndex, rowIndex + 2);
             gridPane.add(button, columnIndex, rowIndex + 3);
 
             columnIndex++;
-            if (columnIndex == 3) { // Número de colunas que você deseja exibir, ajuste conforme necessário
+            if (columnIndex == 5) { // Número de colunas que você deseja exibir, ajuste conforme necessário
                 columnIndex = 0;
                 rowIndex += 4; // Avança para a próxima linha
             }

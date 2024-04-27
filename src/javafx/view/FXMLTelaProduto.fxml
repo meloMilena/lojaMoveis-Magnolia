@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="527.0" prefWidth="835.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../css/css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.controller.FXMLTelaProdutoController">
    <children>
-      <TableView fx:id="tableViewProduto" layoutX="27.0" layoutY="19.0" prefHeight="431.0" prefWidth="789.0" stylesheets="@../../css/css.css">
+      <TableView fx:id="tableViewProduto" layoutX="27.0" layoutY="19.0" prefHeight="439.0" prefWidth="764.0" stylesheets="@../../css/css.css" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columns>
           <TableColumn fx:id="tableColumnID" text="ID" />
           <TableColumn fx:id="tableColumnProduto" prefWidth="120.0" text="Produto" />
@@ -22,7 +22,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <GridPane layoutX="369.0" layoutY="467.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="52.0" prefWidth="438.0" stylesheets="@../../css/css.css">
+      <GridPane layoutX="342.0" layoutY="469.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="52.0" prefWidth="438.0" stylesheets="@../../css/css.css">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="98.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="99.0" />

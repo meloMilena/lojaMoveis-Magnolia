@@ -52,6 +52,15 @@
     -fx-background-color: #FFFFFF;
 }
 
+.button-add-carrinho {
+    -fx-text-fill:#2B2B2B;
+    -fx-font-size:16px;
+    -fx-border-color: #727272;
+    -fx-border-radius:8px;
+    -fx-font-family: "Segoe UI Light";
+    -fx-background-color: #FFFFFF;
+}
+
 .text-input {
     -fx-visible: true;
 }

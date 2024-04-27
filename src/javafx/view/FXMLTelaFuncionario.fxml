@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="527.0" prefWidth="835.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.controller.FXMLTelaFuncionarioController">
    <children>
-      <TableView fx:id="tableViewFuncionario" layoutX="27.0" layoutY="19.0" prefHeight="439.0" prefWidth="782.0" stylesheets="@../../css/css.css">
+      <TableView fx:id="tableViewFuncionario" layoutY="19.0" prefHeight="439.0" prefWidth="764.0" stylesheets="@../../css/css.css" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columns>
           <TableColumn fx:id="tableColumnId" prefWidth="75.0" styleClass="column-header" text="ID" />
           <TableColumn fx:id="tableColumnNome" prefWidth="75.0" styleClass="column-header" text="Nome" />
@@ -21,7 +21,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <GridPane layoutX="505.0" layoutY="465.0" prefHeight="42.0" prefWidth="304.0" style="-fx-background-color: #FFFFFF;">
+      <GridPane layoutX="476.0" layoutY="471.0" prefHeight="42.0" prefWidth="304.0" style="-fx-background-color: #FFFFFF;">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="99.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="104.0" minWidth="10.0" prefWidth="104.0" />
