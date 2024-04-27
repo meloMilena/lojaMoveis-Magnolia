@@ -4,6 +4,17 @@
     -fx-border-color: #2B2B2B;
     -fx-padding:0px;
 }
+
+
+.anchor-pane {
+    -fx-background-color: white;
+}
+
+.scroll-pane {
+    -fx-background-color: white;
+}
+
+
 .table-view .table-column{
     -fx-alignment:CENTER;
      -fx-font-size:16px;
@@ -80,4 +91,13 @@
 
 .button-menu:hover {
     -fx-background-color: #0096C9;
+}
+
+
+#root {
+    -fx-background-color: #FFFFFF;
+}
+
+.scroll-pane {
+    -fx-background-color: #FFFFFF;
 }

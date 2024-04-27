@@ -28,7 +28,7 @@
 
                   <Label fx:id="labelNomeProduto" styleClass="label-visualizar" stylesheets="@../../css/css.css" GridPane.rowIndex="1" />
                   <Label fx:id="labelDescricao" styleClass="label-visualizar" stylesheets="@../../css/css.css" GridPane.rowIndex="2" />
-    <Button fx:id="button" mnemonicParsing="false" prefHeight="40.0" prefWidth="229.0" styleClass="button-add-carrinho" stylesheets="@../../css/css.css" text="Adicionar ao Carrinho" GridPane.rowIndex="3" />
+    <Button fx:id="button" mnemonicParsing="false" prefHeight="40.0" prefWidth="229.0" styleClass="button-add-carrinho" stylesheets="@../../css/css.css" text="A" GridPane.rowIndex="3" />
  </children>
             </GridPane>
          </content>

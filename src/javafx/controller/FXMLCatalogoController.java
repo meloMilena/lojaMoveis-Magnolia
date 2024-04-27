@@ -50,27 +50,32 @@ public class FXMLCatalogoController implements Initializable {
     @FXML
     private Button button;
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        produtoDAO.setConnection(connection);
-        
-        root.getStylesheets().add(getClass().getResource("/css/css.css").toExternalForm());
-        
-        labelNomeProduto.getStyleClass().add("label-visualizar");
-        labelDescricao.getStyleClass().add("label-visualizar");
-        button.getStyleClass().add("button-add-carrinho");
-          
-        carregarProdutos();
-    }
+ @Override
+public void initialize(URL url, ResourceBundle rb) {
+    produtoDAO.setConnection(connection);
+
+    carregarProdutos();
+}
+
 
     private void carregarProdutos() {
         List<Produto> produtos = produtoDAO.listar();
 
+        labelNomeProduto.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
+    
+    
         AnchorPane.setTopAnchor(scrollPane, 0.0);
         AnchorPane.setBottomAnchor(scrollPane, 0.0);
         AnchorPane.setLeftAnchor(scrollPane, 0.0);
         AnchorPane.setRightAnchor(scrollPane, 0.0);
-
+        
+        
+        scrollPane.getStyleClass().add("scroll-pane");
+        scrollPane.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
+            
+        root.getStyleClass().add("anchor-pane");
+        root.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
+            
 
        // Dentro do método carregarProdutos
         GridPane gridPane = new GridPane();
@@ -91,7 +96,12 @@ public class FXMLCatalogoController implements Initializable {
             imageView.setFitWidth(150);
             imageView.setFitHeight(150);
 
-            Button button = new Button("Adicionar ao Carriinho");
+            Button button = new Button();
+            button.setText("Adicionar ao Carrinho");
+            button.setPrefHeight(40.0);
+            button.setPrefWidth(229.0);
+            button.getStyleClass().add("button-add-carrinho");
+            button.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
             button.setOnAction(event -> {
                 Node source = (Node) event.getSource();
                 GridPane parentPane = (GridPane) source.getParent();
@@ -102,17 +112,25 @@ public class FXMLCatalogoController implements Initializable {
             labelNomeProduto = new Label(produto.getNome());
             labelDescricao = new Label(produto.getDescricao());
 
+            labelNomeProduto.getStyleClass().add("label-visualizar");
+            labelNomeProduto.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
+
+            labelDescricao.getStyleClass().add("label-visualizar");
+            labelDescricao.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
+
+
             gridPane.add(imageView, columnIndex, rowIndex);
             gridPane.add(labelNomeProduto, columnIndex, rowIndex + 1);
             gridPane.add(labelDescricao, columnIndex, rowIndex + 2);
             gridPane.add(button, columnIndex, rowIndex + 3);
 
             columnIndex++;
-            if (columnIndex == 5) { // Número de colunas que você deseja exibir, ajuste conforme necessário
+            if (columnIndex == 5) {
                 columnIndex = 0;
-                rowIndex += 4; // Avança para a próxima linha
+                rowIndex += 4;
             }
         }
+
 
         scrollPane.setContent(gridPane);
         
