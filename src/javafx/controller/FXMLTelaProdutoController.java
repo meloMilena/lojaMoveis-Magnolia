@@ -213,7 +213,6 @@ public void handleButtonRemover() throws IOException {
         controller.setDialogStage(dialogStage);
         controller.setProduto(produto, produtoFornecedor, fornecedor);
 
-
         dialogStage.showAndWait();
 
         return controller.isButtonConfirmarClicked();

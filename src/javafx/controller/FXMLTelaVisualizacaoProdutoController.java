@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.domain.Produto;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.stage.Stage;
 
 public class FXMLTelaVisualizacaoProdutoController implements Initializable {
 
@@ -30,9 +31,17 @@ public class FXMLTelaVisualizacaoProdutoController implements Initializable {
     private Label labelCodBarras;
     @FXML
     private Label labelCategoria;
-
     
+    private Stage dialogStage;
     private Produto produto;
+    
+    public Stage getDialogStage() {
+        return dialogStage;
+    }
+    
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -60,4 +69,11 @@ public class FXMLTelaVisualizacaoProdutoController implements Initializable {
             labelCodBarras.setText(String.valueOf(produto.getCodBarras()));
         }
     }
+    
+    @FXML
+    public void handleButtonConfirmar() {
+        Stage stage = (Stage) imagemProduto.getScene().getWindow(); // Obtém a referência para o Stage da janela atual
+        stage.close(); // Fecha a janela
+    }
+
 }

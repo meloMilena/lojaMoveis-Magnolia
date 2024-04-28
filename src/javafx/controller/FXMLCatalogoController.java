@@ -40,11 +40,11 @@ public class FXMLCatalogoController implements Initializable {
     private Stage dialogStage;
     private boolean buttonConfirmarClicked = false;
 
-      @FXML
-    private AnchorPane root; // Sua janela raiz
+    @FXML
+    private AnchorPane root; 
 
     @FXML
-    private ScrollPane scrollPane; // Adicione isso ao seu FXML
+    private ScrollPane scrollPane; 
     @FXML
     private ImageView imageView;
     @FXML
@@ -69,7 +69,7 @@ public void initialize(URL url, ResourceBundle rb) {
     
     
         AnchorPane rootPane = new AnchorPane();
-        rootPane.setStyle("-fx-background-color: white;"); // Definindo a cor de fundo branca para o AnchorPane
+        rootPane.setStyle("-fx-background-color: white;"); 
         AnchorPane.setTopAnchor(scrollPane, 0.0);
         AnchorPane.setBottomAnchor(scrollPane, 0.0);
         AnchorPane.setLeftAnchor(scrollPane, 0.0);
@@ -90,8 +90,6 @@ public void initialize(URL url, ResourceBundle rb) {
         for (Produto produto : produtos) {
             String imageUrl = getClass().getResource("/imgProduto/" + produto.getUrlImagem()).toExternalForm();
 
-            System.out.println("Caminho da imagem: " + imageUrl);
-
             imageView = new ImageView(imageUrl);
             imageView.setFitWidth(150);
             imageView.setFitHeight(150);
@@ -105,7 +103,7 @@ public void initialize(URL url, ResourceBundle rb) {
                 Node source = (Node) event.getSource();
                 GridPane parentPane = (GridPane) source.getParent();
                 Produto produtoAtual = (Produto) parentPane.getChildren().get(0).getUserData();
-                adicionarAoCarrinho(produtoAtual);
+                //adicionarAoCarrinho(produtoAtual);;
             });
 
 
@@ -138,12 +136,12 @@ public void initialize(URL url, ResourceBundle rb) {
         
     }
 
-    private void adicionarAoCarrinho(Produto produto) {
+  /*  private void adicionarAoCarrinho(Produto produto) {
         // Lógica para adicionar o produto ao carrinho
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Adicionar ao Carrinho");
         alert.setHeaderText(null);
         alert.setContentText("Produto \"" + produto.getNome() + "\" adicionado ao carrinho!");
         alert.showAndWait();
-    }
+    }*/
 }
