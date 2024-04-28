@@ -25,6 +25,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.scene.paint.Color;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 
 public class FXMLCatalogoController implements Initializable {
 
@@ -64,25 +68,21 @@ public void initialize(URL url, ResourceBundle rb) {
         labelNomeProduto.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
     
     
+        AnchorPane rootPane = new AnchorPane();
+        rootPane.setStyle("-fx-background-color: white;"); // Definindo a cor de fundo branca para o AnchorPane
         AnchorPane.setTopAnchor(scrollPane, 0.0);
         AnchorPane.setBottomAnchor(scrollPane, 0.0);
         AnchorPane.setLeftAnchor(scrollPane, 0.0);
         AnchorPane.setRightAnchor(scrollPane, 0.0);
-        
-        
-        scrollPane.getStyleClass().add("scroll-pane");
-        scrollPane.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
-            
-        root.getStyleClass().add("anchor-pane");
-        root.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
-            
-
+  
        // Dentro do método carregarProdutos
         GridPane gridPane = new GridPane();
-        gridPane.setHgap(10);
+        gridPane.setStyle("-fx-background-color: white;"); // Definindo a cor de fundo branca para o GridPane
+        gridPane.setHgap(50);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
-        GridPane.setMargin(gridPane, new Insets(0, 0, 20, 0));
+        GridPane.setMargin(gridPane, new Insets(0, 0, 20, 0)); // Defina o valor desejado para as margens superior e inferior
+
 
         int rowIndex = 0;
         int columnIndex = 0;
@@ -96,11 +96,10 @@ public void initialize(URL url, ResourceBundle rb) {
             imageView.setFitWidth(150);
             imageView.setFitHeight(150);
 
-            Button button = new Button();
-            button.setText("Adicionar ao Carrinho");
-            button.setPrefHeight(40.0);
-            button.setPrefWidth(229.0);
-            button.getStyleClass().add("button-add-carrinho");
+            Button button = new Button("Adicionar ao Carrinho");
+            button.setPrefHeight(30.0); // Definindo a altura do botão como 30.0 (ou o tamanho desejado)
+            button.setMaxWidth(Double.MAX_VALUE); // Ocupa toda a largura disponível
+            button.getStyleClass().add("button-add-carrinho"); 
             button.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
             button.setOnAction(event -> {
                 Node source = (Node) event.getSource();
@@ -108,6 +107,9 @@ public void initialize(URL url, ResourceBundle rb) {
                 Produto produtoAtual = (Produto) parentPane.getChildren().get(0).getUserData();
                 adicionarAoCarrinho(produtoAtual);
             });
+
+
+
 
             labelNomeProduto = new Label(produto.getNome());
             labelDescricao = new Label(produto.getDescricao());

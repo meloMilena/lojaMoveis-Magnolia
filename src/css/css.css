@@ -63,9 +63,19 @@
     -fx-background-color: #FFFFFF;
 }
 
+.button-add-produto {
+    -fx-text-fill:#2B2B2B;
+    -fx-font-size:15px;
+    -fx-border-color: #727272;
+    -fx-border-radius:12px;
+    -fx-font-family: "Segoe UI Light";
+    -fx-background-color: #FFFFFF;
+}
+
 .button-add-carrinho {
     -fx-text-fill:#2B2B2B;
-    -fx-font-size:16px;
+    -fx-max-width: 230px;
+    -fx-font-size:14px;
     -fx-border-color: #727272;
     -fx-border-radius:8px;
     -fx-font-family: "Segoe UI Light";
@@ -77,7 +87,7 @@
 }
 
 .root {
-    -fx-max-width: 800px; /* Defina o valor desejado */
+    -fx-max-width: 1020px; /* Defina o valor desejado */
 }
 
 

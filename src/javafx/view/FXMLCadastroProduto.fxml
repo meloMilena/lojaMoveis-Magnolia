@@ -82,9 +82,9 @@
             </GridPane>
          </children>
       </Pane>
-      <Button layoutX="586.0" layoutY="683.0" mnemonicParsing="false" onAction="#handleButtonConfirmar" prefHeight="39.0" prefWidth="102.0" styleClass="button-salvar" stylesheets="@../../css/css.css" text="Salvar" />
-      <Button layoutX="449.0" layoutY="683.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="102.0" styleClass="button-cancelar" stylesheets="@../../css/css.css" text="Cancelar" />
-      <Button fx:id="buttonImage" layoutX="62.0" layoutY="171.0" mnemonicParsing="false" onAction="#selecionarImagem" prefHeight="25.0" prefWidth="159.0" text="AdicionarImagem" />
-      <ImageView fx:id="imagemProduto" fitHeight="123.0" fitWidth="151.0" layoutX="66.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="586.0" layoutY="683.0" mnemonicParsing="false" onAction="#handleButtonConfirmar" prefHeight="46.0" prefWidth="102.0" styleClass="button-salvar" stylesheets="@../../css/css.css" text="Salvar" />
+      <Button layoutX="468.0" layoutY="683.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="102.0" styleClass="button-cancelar" stylesheets="@../../css/css.css" text="Cancelar" />
+      <Button fx:id="buttonImage" layoutX="38.0" layoutY="171.0" mnemonicParsing="false" onAction="#selecionarImagem" prefHeight="33.0" prefWidth="190.0" style="-fx-background-color: #FFFFF;" styleClass="button-add-produto" stylesheets="@../../css/css.css" text="Adicionar Imagem" />
+      <ImageView fx:id="imagemProduto" fitHeight="133.0" fitWidth="190.0" layoutX="37.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

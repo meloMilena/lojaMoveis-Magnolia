@@ -44,8 +44,6 @@ public class FXMLMenuPrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             handleMenuItemCatalogo();
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLMenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -64,12 +62,23 @@ public class FXMLMenuPrincipalController implements Initializable {
         anchorPaneCarregar.getChildren().setAll(a);
     }
     
-    @FXML
-    private void handleMenuItemCatalogo() throws IOException {
-        AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLCatalogo.fxml"));
+ @FXML
+private void handleMenuItemCatalogo() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafx/view/FXMLCatalogo.fxml"));
+        AnchorPane a = loader.load();
+        FXMLCatalogoController catalogoController = loader.getController();
+        catalogoController.initialize(null, null); // Manually initialize the controller
         anchorPaneCarregar.getChildren().setAll(a);
+    } catch (IOException ex) {
+        ex.printStackTrace();
+        // Handle the exception accordingly, e.g., show an error message to the user
+    } catch (Exception e) {
+        e.printStackTrace();
+        // Handle any other unexpected exceptions
     }
-     
+}
+
     @FXML
     private void handleMenuItemProduto() throws IOException {
         AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLTelaProduto.fxml"));
