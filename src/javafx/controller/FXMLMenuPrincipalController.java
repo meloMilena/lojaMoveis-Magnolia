@@ -17,7 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class FXMLMenuPrincipalController implements Initializable {
     @FXML
@@ -38,15 +40,35 @@ public class FXMLMenuPrincipalController implements Initializable {
     private Button buttonRegistrarPedido;
     @FXML
     private MenuItem menuItemProduto;
+    @FXML
     private MenuItem menuItemCliente;
+    @FXML
+    private AnchorPane anchorPane;
 
+    private double xOffset = 0;
+    private double yOffset = 0;
+    
    @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            makeStageDraggable();
             handleMenuItemCatalogo();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+   private void makeStageDraggable() {
+        anchorPane.setOnMousePressed((MouseEvent event) -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+
+        anchorPane.setOnMouseDragged((MouseEvent event) -> {
+            Stage stage = (Stage) anchorPane.getScene().getWindow();
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
+        });
     }
 
             
@@ -62,22 +84,22 @@ public class FXMLMenuPrincipalController implements Initializable {
         anchorPaneCarregar.getChildren().setAll(a);
     }
     
- @FXML
-private void handleMenuItemCatalogo() {
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafx/view/FXMLCatalogo.fxml"));
-        AnchorPane a = loader.load();
-        FXMLCatalogoController catalogoController = loader.getController();
-        catalogoController.initialize(null, null); // Manually initialize the controller
-        anchorPaneCarregar.getChildren().setAll(a);
-    } catch (IOException ex) {
-        ex.printStackTrace();
-        // Handle the exception accordingly, e.g., show an error message to the user
-    } catch (Exception e) {
-        e.printStackTrace();
-        // Handle any other unexpected exceptions
+    @FXML
+    private void handleMenuItemCatalogo() {
+       try {
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafx/view/FXMLCatalogo.fxml"));
+           AnchorPane a = loader.load();
+           FXMLCatalogoController catalogoController = loader.getController();
+           catalogoController.initialize(null, null); // Manually initialize the controller
+           anchorPaneCarregar.getChildren().setAll(a);
+       } catch (IOException ex) {
+           ex.printStackTrace();
+           // Handle the exception accordingly, e.g., show an error message to the user
+       } catch (Exception e) {
+           e.printStackTrace();
+           // Handle any other unexpected exceptions
+       }
     }
-}
 
     @FXML
     private void handleMenuItemProduto() throws IOException {

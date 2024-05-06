@@ -11,9 +11,9 @@
 
 <AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../css/css.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.controller.FXMLCatalogoController">
     <children>
-       <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="119.0" layoutY="306.0" prefWidth="824.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../css/css.css">
+       <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="290.0" prefWidth="702.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../css/css.css">
          <content>
-            <GridPane prefHeight="223.0" prefWidth="222.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../css/css.css">
+            <GridPane prefHeight="528.0" prefWidth="609.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../css/css.css">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -26,7 +26,7 @@
                <children>
               <ImageView fx:id="imageView" fitHeight="105.0" fitWidth="223.0" />
       
-                              <Label fx:id="labelNomeProduto" prefHeight="21.0" prefWidth="228.0" styleClass="label-visualizar" stylesheets="@../../css/css.css" GridPane.rowIndex="1" />
+                                    <Label fx:id="labelNomeProduto" prefHeight="21.0" prefWidth="228.0" styleClass="label-visualizar" stylesheets="@../../css/css.css" GridPane.rowIndex="1" />
                   <Label fx:id="labelDescricao" prefHeight="21.0" prefWidth="227.0" styleClass="label-visualizar" stylesheets="@../../css/css.css" GridPane.rowIndex="2" />
       <Button fx:id="button" maxWidth="226.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="226.0" styleClass="button-add-carrinho" stylesheets="@../../css/css.css" text="A" GridPane.rowIndex="3" />
       </children>

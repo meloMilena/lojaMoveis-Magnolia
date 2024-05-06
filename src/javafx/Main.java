@@ -18,13 +18,13 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("view/FXMLLogin.fxml"));
-
+        
         Scene scene = new Scene(root);
       
         stage.setScene(scene);
-        stage.setTitle("");
-        stage.setResizable(false);;
-        stage.initStyle(StageStyle.UNDECORATED); //Deixa a barra superior da tela invisivel;;
+        stage.setTitle("Magnolia");
+        stage.setResizable(false);
+        stage.initStyle(StageStyle.UNDECORATED); //Deixa a barra superior da tela invisivel
         stage.show();
     }
 

@@ -35,13 +35,30 @@ public class FXMLLoginController implements Initializable {
     private TextField textFiedlEmail;
     @FXML
     private AnchorPane anchorPane;
+    
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     private final Database database = DatabaseFactory.getDatabase("postgresql");
     private final Connection connection = database.conectar();
  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        makeStageDraggable();
     }   
+    
+    private void makeStageDraggable() {
+        anchorPane.setOnMousePressed((MouseEvent event) -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+
+        anchorPane.setOnMouseDragged((MouseEvent event) -> {
+            Stage stage = (Stage) anchorPane.getScene().getWindow();
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
+        });
+    }
     
     @FXML
     private void clicarBotaoLogin(ActionEvent event) throws IOException {

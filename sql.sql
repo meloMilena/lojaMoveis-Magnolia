@@ -92,12 +92,9 @@ CREATE TABLE gerente (
  salario        NUMERIC     NOT NULL,
  status         VARCHAR(20) NOT NULL,
  pessoa_gerente INTEGER     NOT NULL,
- gerente_admin  INTEGER     NOT NULL,
  CONSTRAINT pk_gerente PRIMARY KEY (id_gerente),
  CONSTRAINT fk_gerente_pessoa FOREIGN KEY (pessoa_gerente)
-    REFERENCES pessoa (id_pessoa),
- CONSTRAINT fk_gerente_admin  FOREIGN KEY (gerente_admin)
-	REFERENCES  admin (id_admin)
+    REFERENCES pessoa (id_pessoa)
 );
 
 CREATE TABLE cliente (
@@ -161,6 +158,7 @@ CREATE TABLE status (
     descricao VARCHAR(50) NOT NULL
 );
 
+ 
 INSERT INTO endereco (cep, bairro, rua, numero, complemento) VALUES ('12345-678', 'Centro', 'Rua Principal', 123, 'Ap 101');
 INSERT INTO endereco (cep, bairro, rua, numero, complemento) VALUES ('54321-098', 'Bairro Novo', 'Avenida Secundária', 456, 'Casa');
 
@@ -185,8 +183,8 @@ INSERT INTO produto (nome, preco, peso, url_imagem, tamanho, cod_barras, cor, ma
 INSERT INTO estoque (quantidade, prod_estoque) VALUES (50, 1);
 INSERT INTO estoque (quantidade, prod_estoque) VALUES (30, 2);
 
-INSERT INTO gerente (salario, status, pessoa_gerente, gerente_admin) VALUES (5000.00, 'Ativo', 1, 1);
-INSERT INTO gerente (salario, status, pessoa_gerente, gerente_admin) VALUES (6000.00, 'Ativo', 2, 2);
+INSERT INTO gerente (salario, status, pessoa_gerente) VALUES (5000.00, 'Ativo', 1);
+INSERT INTO gerente (salario, status, pessoa_gerente) VALUES (6000.00, 'Ativo', 2);
 
 INSERT INTO cliente (pessoa_cliente) VALUES (1);
 INSERT INTO cliente (pessoa_cliente) VALUES (2);
