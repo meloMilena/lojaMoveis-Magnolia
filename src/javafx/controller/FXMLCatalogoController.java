@@ -54,35 +54,26 @@ public class FXMLCatalogoController implements Initializable {
     @FXML
     private Button button;
     
- @Override
-public void initialize(URL url, ResourceBundle rb) {
-    produtoDAO.setConnection(connection);
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        produtoDAO.setConnection(connection);
 
-    carregarProdutos();
-}
+        carregarProdutos();
+    }
 
 
     private void carregarProdutos() {
         List<Produto> produtos = produtoDAO.listar();
 
         labelNomeProduto.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
-    
-    
-        AnchorPane rootPane = new AnchorPane();
-        rootPane.setStyle("-fx-background-color: white;"); 
-        AnchorPane.setTopAnchor(scrollPane, 0.0);
-        AnchorPane.setBottomAnchor(scrollPane, 0.0);
-        AnchorPane.setLeftAnchor(scrollPane, 0.0);
-        AnchorPane.setRightAnchor(scrollPane, 0.0);
-  
-       // Dentro do método carregarProdutos
+
+        // Dentro do método carregarProdutos
         GridPane gridPane = new GridPane();
         gridPane.setStyle("-fx-background-color: white;"); // Definindo a cor de fundo branca para o GridPane
         gridPane.setHgap(50);
         gridPane.setVgap(10);
-        gridPane.setAlignment(Pos.CENTER);
-        GridPane.setMargin(gridPane, new Insets(0, 0, 20, 0)); // Defina o valor desejado para as margens superior e inferior
-
+        gridPane.setAlignment(Pos.TOP_CENTER); // Alinhar no topo da tela
+        AnchorPane.setTopAnchor(gridPane, 0.0); // Set the top anchor of the GridPane to 0.0
 
         int rowIndex = 0;
         int columnIndex = 0;
@@ -96,8 +87,7 @@ public void initialize(URL url, ResourceBundle rb) {
 
             Button button = new Button("Adicionar ao Carrinho");
             button.setPrefHeight(30.0); // Definindo a altura do botão como 30.0 (ou o tamanho desejado)
-            button.setMaxWidth(Double.MAX_VALUE); // Ocupa toda a largura disponível
-            button.getStyleClass().add("button-add-carrinho"); 
+            button.getStyleClass().add("button-add-carrinho");
             button.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
             button.setOnAction(event -> {
                 Node source = (Node) event.getSource();
@@ -105,9 +95,6 @@ public void initialize(URL url, ResourceBundle rb) {
                 Produto produtoAtual = (Produto) parentPane.getChildren().get(0).getUserData();
                 //adicionarAoCarrinho(produtoAtual);;
             });
-
-
-
 
             labelNomeProduto = new Label(produto.getNome());
             labelDescricao = new Label(produto.getDescricao());
@@ -117,7 +104,6 @@ public void initialize(URL url, ResourceBundle rb) {
 
             labelDescricao.getStyleClass().add("label-visualizar");
             labelDescricao.getStylesheets().addAll(getClass().getResource("/css/css.css").toExternalForm());
-
 
             gridPane.add(imageView, columnIndex, rowIndex);
             gridPane.add(labelNomeProduto, columnIndex, rowIndex + 1);
@@ -131,17 +117,15 @@ public void initialize(URL url, ResourceBundle rb) {
             }
         }
 
+        scrollPane = new ScrollPane(gridPane); // Coloque o GridPane dentro do ScrollPane
+        scrollPane.setFitToWidth(true); // Faz com que o ScrollPane preencha a largura disponível
+        scrollPane.setFitToHeight(true); // Faz com que o ScrollPane preencha a altura disponível
 
-        scrollPane.setContent(gridPane);
-        
+        AnchorPane.setTopAnchor(scrollPane, 0.0);
+        AnchorPane.setBottomAnchor(scrollPane, 0.0);
+        AnchorPane.setLeftAnchor(scrollPane, 0.0);
+        AnchorPane.setRightAnchor(scrollPane, 0.0);
+
+        root.getChildren().add(scrollPane); // Adicione o ScrollPane à raiz (root)
     }
-
-  /*  private void adicionarAoCarrinho(Produto produto) {
-        // Lógica para adicionar o produto ao carrinho
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Adicionar ao Carrinho");
-        alert.setHeaderText(null);
-        alert.setContentText("Produto \"" + produto.getNome() + "\" adicionado ao carrinho!");
-        alert.showAndWait();
-    }*/
 }

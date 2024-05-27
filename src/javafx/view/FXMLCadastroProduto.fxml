@@ -28,9 +28,9 @@
             <Label text="Marca:" />
             <Label text="Fornecedor:" GridPane.rowIndex="1" />
             <Label text="Categoria:" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMarca" GridPane.columnIndex="1" />
-            <ComboBox fx:id="comboBoxCategoria" prefHeight="25.0" prefWidth="224.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox fx:id="comboBoxFornecedor" prefHeight="25.0" prefWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textFieldMarca" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" />
+            <ComboBox fx:id="comboBoxCategoria" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: FFFFFF; -fx-border-color: D7D7D7; -fx-border-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="comboBoxFornecedor" prefHeight="25.0" prefWidth="240.0" style="-fx-background-color: FFFFFF; -fx-border-color: D7D7D7; -fx-border-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <GridPane layoutX="47.0" layoutY="205.0" prefHeight="163.0" prefWidth="647.0">
@@ -43,7 +43,7 @@
         </rowConstraints>
          <children>
             <Label prefHeight="0.0" prefWidth="54.0" text="Descrição:" />
-            <TextArea fx:id="textAreaDescricao" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+            <TextArea fx:id="textAreaDescricao" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: FFFFFF; -fx-border-color: D7D7D7;" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Pane layoutX="47.0" layoutY="399.0" prefHeight="250.0" prefWidth="647.0" style="-fx-border-color: D7D7D7; -fx-background-color: FFFFFF; -fx-border-radius: 8;">
@@ -68,16 +68,16 @@
                   <Label text="Nome Produtos:" GridPane.rowIndex="2" />
                   <Label text="Cor / Variação:" GridPane.rowIndex="3" />
                   <Label text="Preço:" GridPane.rowIndex="4" />
-                  <TextField fx:id="textFieldCodBarras" editable="false" GridPane.columnIndex="1" />
-                  <TextField fx:id="textFieldNomeProduto" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="textFieldCorVar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField fx:id="textFieldPreco" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="textFieldCodBarras" editable="false" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" />
+                  <TextField fx:id="textFieldNomeProduto" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="textFieldCorVar" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="textFieldPreco" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label text="Quantidade:" GridPane.rowIndex="1" />
-                  <TextField fx:id="textFieldQuantidade" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="textFieldQuantidade" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="Peso:" GridPane.rowIndex="5" />
-                  <TextField fx:id="textFieldPeso" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="textFieldPeso" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Label text="Tamanho:" GridPane.rowIndex="6" />
-                  <TextField fx:id="textFieldTamanho" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="textFieldTamanho" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
             </GridPane>
          </children>

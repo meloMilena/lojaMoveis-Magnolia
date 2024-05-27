@@ -59,7 +59,7 @@ public class FXMLTelaVisualizacaoProdutoController implements Initializable {
             Image image = new Image(new File(imagePath).toURI().toString());
             imagemProduto.setImage(image);
 
-            labelNomeProduto.setText(produto.getNome());
+            labelNomeProduto.setText(String.valueOf(produto.getNome()));
             labelDescricaoProduto.setText(produto.getDescricao());
             labelPrecoProduto.setText(String.valueOf(produto.getPreco()));
             labelMarca.setText(String.valueOf(produto.getMarca()));
