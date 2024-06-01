@@ -101,4 +101,39 @@ public class ClienteDAO {
         }
         return clientes;
     }
+    
+    public Cliente buscarPorCPF(String cpf) {
+    String sql = "SELECT * "
+            + "FROM endereco AS e "
+            + "JOIN pessoa AS p ON e.id_endereco = p.endereco_pessoa "
+            + "JOIN cliente AS c ON p.id_pessoa = c.pessoa_cliente "
+            + "WHERE p.cpf = ?";
+
+    try {
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        stmt.setString(1, cpf);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            int idCliente = rs.getInt("id_cliente");
+            int idPessoa = rs.getInt("id_pessoa");
+            String nome = rs.getString("nome");
+            String email = rs.getString("email");
+            String telefone = rs.getString("telefone");
+            int idEndereco = rs.getInt("id_endereco");
+            String cep = rs.getString("cep");
+            String bairro = rs.getString("bairro");
+            String rua = rs.getString("rua");
+            int numero = rs.getInt("numero");
+            String complemento = rs.getString("complemento");
+
+            Endereco endereco = new Endereco(idEndereco, cep, bairro, rua, numero, complemento);
+
+            return new Cliente(idPessoa, nome, email, cpf, telefone, idCliente, endereco);
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return null; // Retorna null se não encontrar nenhum cliente com o CPF informado
+}
+
 }

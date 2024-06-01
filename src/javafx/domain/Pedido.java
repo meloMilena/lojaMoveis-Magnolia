@@ -5,27 +5,61 @@
  */
 package javafx.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Pedido {
     private int idPedido;
     private double valor;
-    private LocalDateTime dataEntrega;
+    private LocalDate dataEntrega;
     private String cpf;
-    private LocalDateTime data;
-    private Endereco endereco;
+    private String telefone;
+    private LocalDate data;
     private Produto produto;
+    private Funcionario funcionario;
+    private Endereco endereco;
+    
 
-    public Pedido(int idPedido, double valor, LocalDateTime dataEntrega, String cpf, LocalDateTime data,
-            Endereco endereco, Produto produto) {
+    public Pedido(int idPedido, double valor, LocalDate dataEntrega, String cpf, LocalDate data,
+             Produto produto, Funcionario funcionario, String telefone, Endereco endereco) {
         this.idPedido = idPedido;
         this.valor = valor;
         this.dataEntrega = dataEntrega;
         this.cpf = cpf;
         this.data = data;
-        this.endereco = endereco;
         this.produto = produto;
+        this.funcionario = funcionario;
+        this.telefone = telefone;
     }
+
+    public Pedido() {
+       
+    }
+    
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+    
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+    
+     public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
+    public Endereco getEndereco() {
+        return endereco;
+    }
+    
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    
+    public String getTelefone() {
+        return telefone;
+    }
+
 
     public int getIdPedido() {
         return idPedido;
@@ -35,7 +69,7 @@ public class Pedido {
         return valor;
     }
 
-    public LocalDateTime getDataEntrega() {
+    public LocalDate getDataEntrega() {
         return dataEntrega;
     }
 
@@ -43,13 +77,11 @@ public class Pedido {
         return cpf;
     }
 
-    public LocalDateTime getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
+  
 
     public Produto getProduto() {
         return produto;
@@ -63,7 +95,7 @@ public class Pedido {
         this.valor = valor;
     }
 
-    public void setDataEntrega(LocalDateTime dataEntrega) {
+    public void setDataEntrega(LocalDate dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
 
@@ -71,13 +103,10 @@ public class Pedido {
         this.cpf = cpf;
     }
 
-    public void setData(LocalDateTime data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
 
     public void setProduto(Produto produto) {
         this.produto = produto;

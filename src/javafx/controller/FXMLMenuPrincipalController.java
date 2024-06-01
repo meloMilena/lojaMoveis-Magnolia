@@ -14,11 +14,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class FXMLMenuPrincipalController implements Initializable {
@@ -48,7 +50,7 @@ public class FXMLMenuPrincipalController implements Initializable {
     private double xOffset = 0;
     private double yOffset = 0;
     
-   @Override
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             makeStageDraggable();
@@ -58,7 +60,7 @@ public class FXMLMenuPrincipalController implements Initializable {
         }
     }
     
-   private void makeStageDraggable() {
+    private void makeStageDraggable() {
         anchorPane.setOnMousePressed((MouseEvent event) -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
@@ -71,7 +73,6 @@ public class FXMLMenuPrincipalController implements Initializable {
         });
     }
 
-            
     @FXML
     private void handleMenuItemCadastroFuncionario() throws IOException {
         AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLTelaFuncionario.fxml"));
@@ -100,6 +101,28 @@ public class FXMLMenuPrincipalController implements Initializable {
            // Handle any other unexpected exceptions
        }
     }
+    
+    @FXML
+    private void handleRegistraPedido() throws IOException {
+        // Load the FXML file
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/javafx/view/FXMLRegistrarPedido.fxml"));
+        AnchorPane root = fxmlLoader.load();
+
+        // Create a new stage
+        Stage stage = new Stage();
+        stage.setTitle("Registrar Pedido");
+
+        // Create a new scene with the loaded FXML
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+        // Set the new stage modality to block input events from being delivered to its owner
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(anchorPane.getScene().getWindow());
+
+        // Show the new stage and wait until it is closed
+        stage.showAndWait();
+    }
 
     @FXML
     private void handleMenuItemProduto() throws IOException {
@@ -112,5 +135,4 @@ public class FXMLMenuPrincipalController implements Initializable {
         AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLTelaCliente.fxml"));
         anchorPaneCarregar.getChildren().setAll(a);
     }
-            
 }

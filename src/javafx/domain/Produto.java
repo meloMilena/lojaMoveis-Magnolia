@@ -27,6 +27,8 @@ public class Produto {
     private String nomeFornecedor;
     private String urlImagem;
     private Produto produto;
+    private int quantidade;
+    private double totalValor;
     
     public Produto(){
     }
@@ -49,6 +51,15 @@ public class Produto {
         this.idFornecedor = idFornecedor;
         this.nomeFornecedor = nomeFornecedor;
     }
+    
+    public double getTotalValor() {
+        return totalValor;
+    }
+
+    public void setTotalValor(double totalValor) {
+        this.totalValor = totalValor;
+    }
+    
     
      public Produto getProduto() {
         return produto;
@@ -89,6 +100,14 @@ public class Produto {
     
      public void setProdutoFornecedor(ProdutoFornecedor produtoFornecedor) {
         this.produtoFornecedor = produtoFornecedor;
+    }
+    
+         public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
     
     public Fornecedor getFornecedor() {
@@ -188,8 +207,9 @@ public class Produto {
     }
 
     
-    @Override
+   @Override
     public String toString() {
-        return this.nomeFornecedor;
+        return this.nomeFornecedor; // Return the product name and supplier name
     }
+
 }

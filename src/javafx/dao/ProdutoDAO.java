@@ -121,50 +121,51 @@ public class ProdutoDAO {
         }
     }
 
-    public List<Produto> listar() {
+  public List<Produto> listar() {
          String query = "SELECT *, f.nome AS nomefornecedor, c.nome AS nome_categoria, c.descricao AS descricao_categoria " +
-                       "FROM produto p " +
-                       "INNER JOIN produto_fornecedor pf ON p.prod_fornecedor = pf.id_produto_fornecedor " +
-                       "INNER JOIN fornecedor f ON pf.fornecedor_prod = f.id_fornecedor " +
-                       "INNER JOIN categoria c ON p.categoria = c.id_categoria";
+               "FROM produto p " +
+               "INNER JOIN produto_fornecedor pf ON p.prod_fornecedor = pf.id_produto_fornecedor " +
+               "INNER JOIN fornecedor f ON pf.fornecedor_prod = f.id_fornecedor " +
+               "INNER JOIN categoria c ON p.categoria = c.id_categoria";
+         
+    List<Produto> produtos = new ArrayList<>();
+    try {
+        PreparedStatement stmt = connection.prepareStatement(query);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            Produto produto = new Produto();
+            produto.setIdProduto(rs.getInt("id_produto"));
+            produto.setNome(rs.getString("nome"));
+            produto.setUrlImagem(rs.getString("url_imagem"));
+            produto.setPreco(rs.getDouble("preco"));
+            produto.setPeso(rs.getDouble("peso"));
+            produto.setTamanho(rs.getString("tamanho"));
+            produto.setCodBarras(rs.getString("cod_barras"));
+            produto.setCor(rs.getString("cor"));
+            produto.setMarca(rs.getString("marca"));
+            produto.setDescricao(rs.getString("descricao"));
 
-        List<Produto> produtos = new ArrayList<>();
-        try {
-            PreparedStatement stmt = connection.prepareStatement(query);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                Produto produto = new Produto();
-                produto.setIdProduto(rs.getInt("id_produto"));
-                produto.setNome(rs.getString("nome"));
-                produto.setUrlImagem(rs.getString("url_imagem"));
-                produto.setPreco(rs.getDouble("preco"));
-                produto.setPeso(rs.getDouble("peso"));
-                produto.setTamanho(rs.getString("tamanho"));
-                produto.setCodBarras(rs.getString("cod_barras"));
-                produto.setCor(rs.getString("cor"));
-                produto.setMarca(rs.getString("marca"));
-                produto.setDescricao(rs.getString("descricao"));
+            ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor(); 
+            produtoFornecedor.setQuantidade(rs.getInt("quantidade"));
+            
+            Categoria categoria = new Categoria();
+            categoria.setIdCategoria(rs.getInt("id_categoria"));
+            categoria.setNome(rs.getString("nome_categoria"));
+            categoria.setDescricao(rs.getString("descricao_categoria"));
 
-                Categoria categoria = new Categoria();
-                categoria.setIdCategoria(rs.getInt("id_categoria"));
-                categoria.setNome(rs.getString("nome_categoria"));
-                categoria.setDescricao(rs.getString("descricao_categoria"));
-
-                Fornecedor fornecedor = new Fornecedor();
-                fornecedor.setIdFornecedor(rs.getInt("fornecedor_prod"));
-                fornecedor.setNome(rs.getString("nomefornecedor"));
-                
-                
-                produto.setFornecedor(fornecedor);
-                produto.setCategoria(categoria);
-                produtos.add(produto);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Fornecedor fornecedor = new Fornecedor();
+            fornecedor.setIdFornecedor(rs.getInt("fornecedor_prod"));
+            fornecedor.setNome(rs.getString("nomefornecedor"));
+            
+            produto.setFornecedor(fornecedor);
+            produto.setCategoria(categoria);
+            produtos.add(produto);
         }
-        return produtos;
+    } catch (SQLException ex) {
+        Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
     }
-
+    return produtos;
+}
 
    
 }

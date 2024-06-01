@@ -38,7 +38,7 @@
                               <Font name="Segoe UI Light" size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="buttonRegistrarPedido" mnemonicParsing="false" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #FFFF;" styleClass="button-menu" stylesheets="@../../css/css.css" text="REGISTRAR PEDIDO">
+                        <Button fx:id="buttonRegistrarPedido" mnemonicParsing="false" onAction="#handleRegistraPedido" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #FFFF;" styleClass="button-menu" stylesheets="@../../css/css.css" text="REGISTRAR PEDIDO">
                            <font>
                               <Font name="Segoe UI Light" size="16.0" />
                            </font>

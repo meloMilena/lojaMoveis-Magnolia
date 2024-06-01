@@ -86,7 +86,6 @@ CREATE TABLE estoque (
     REFERENCES produto (id_produto)
 );
 
-
 CREATE TABLE gerente (
  id_gerente     SERIAL      NOT NULL,
  salario        NUMERIC     NOT NULL,
@@ -114,16 +113,6 @@ CREATE TABLE funcionario (
     REFERENCES pessoa (id_pessoa)
 );
 
-CREATE TABLE item_pedido (
- item_pedido    SERIAL     NOT NULL,
- quantidade     INTEGER    NOT NULL,
- preco          NUMERIC    NOT NULL,
- produto_pedido INTEGER    NOT NULL,
- CONSTRAINT pk_item_pedido PRIMARY KEY (item_pedido),
- CONSTRAINT fk_pedido_produto FOREIGN KEY (produto_pedido)
-    REFERENCES produto (id_produto)
-);
-
 CREATE TABLE pedido (
  id_pedido          SERIAL        NOT NULL,
  valor_total        NUMERIC       NOT NULL,
@@ -131,34 +120,66 @@ CREATE TABLE pedido (
  cpf                VARCHAR(11)   NOT NULL,
  data               DATE          NOT NULL,
  contato            VARCHAR(50)   NOT NULL,
- item_ped           INTEGER       NOT NULL,
  funcionario_pedido INTEGER       NOT NULL,
- categoria_pedido   INTEGER       NOT NULL,
  CONSTRAINT pk_pedido PRIMARY KEY (id_pedido),
- CONSTRAINT fk_pedido_catedoria FOREIGN KEY (categoria_pedido)
-    REFERENCES categoria (id_categoria),
- CONSTRAINT fk_produto_item FOREIGN KEY (item_ped)
-    REFERENCES item_pedido (item_pedido),
  CONSTRAINT fk_funcionario_pedido FOREIGN KEY (funcionario_pedido)
     REFERENCES funcionario (id_funcionario)
 );
 
-CREATE TABLE status_pedido (
- id_status_pedido   SERIAL          NOT NULL,
- status_pedido      VARCHAR(50)     NOT NULL,
- pedido_numero      INTEGER         NOT NULL,  
- CONSTRAINT pk_status_pedido PRIMARY KEY (id_status_pedido),
- CONSTRAINT fk_pedido_status FOREIGN KEY (pedido_numero)
+CREATE TABLE item_pedido (
+ item_pedido    SERIAL     NOT NULL,
+ quantidade     INTEGER    NOT NULL,
+ preco          NUMERIC    NOT NULL,
+ produto_pedido INTEGER    NOT NULL,
+ pedido_id      INTEGER    NOT NULL,
+ CONSTRAINT pk_item_pedido PRIMARY KEY (item_pedido),
+ CONSTRAINT fk_pedido_produto FOREIGN KEY (produto_pedido)
+    REFERENCES produto (id_produto),
+ CONSTRAINT fk_item_pedido_pedido FOREIGN KEY (pedido_id)
     REFERENCES pedido (id_pedido)
 );
-
 
 CREATE TABLE status (
     id_status SERIAL PRIMARY KEY,
     descricao VARCHAR(50) NOT NULL
 );
 
- 
+
+CREATE TABLE status_pedido (
+    id_status_pedido SERIAL NOT NULL,
+    status_pedido INTEGER NOT NULL,
+    pedido_numero INTEGER NOT NULL,  
+    CONSTRAINT pk_status_pedido PRIMARY KEY (id_status_pedido),
+    CONSTRAINT fk_pedido_status FOREIGN KEY (pedido_numero) REFERENCES pedido (id_pedido),
+    CONSTRAINT fk_status FOREIGN KEY (status_pedido) REFERENCES status (id_status) 
+);
+
+
+
+CREATE OR REPLACE FUNCTION atualizar_estoque()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE estoque
+    SET quantidade = quantidade - NEW.quantidade
+    WHERE prod_estoque = NEW.produto_pedido;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_atualizar_estoque
+AFTER INSERT ON item_pedido
+FOR EACH ROW
+EXECUTE FUNCTION atualizar_estoque();
+
+
+
+-- Insira dados de teste
+INSERT INTO status (descricao) VALUES ('Em processamento');
+INSERT INTO status (descricao) VALUES ('Saiu Para Entrega');
+INSERT INTO status (descricao) VALUES ('Entregue');
+INSERT INTO status (descricao) VALUES ('Cancelado');
+
+
 INSERT INTO endereco (cep, bairro, rua, numero, complemento) VALUES ('12345-678', 'Centro', 'Rua Principal', 123, 'Ap 101');
 INSERT INTO endereco (cep, bairro, rua, numero, complemento) VALUES ('54321-098', 'Bairro Novo', 'Avenida Secundária', 456, 'Casa');
 
@@ -174,15 +195,6 @@ INSERT INTO pessoa (nome, email, cpf, telefone, endereco_pessoa) VALUES ('Maria'
 INSERT INTO fornecedor (nome, email, cnpj, cnae, telefone, razao_social, endereco_fornecedor) VALUES ('Fornecedor 1', 'fornecedor1@example.com', '12345678901234', '1234567', '987654321', 'Razão Social 1', 1);
 INSERT INTO fornecedor (nome, email, cnpj, cnae, telefone, razao_social, endereco_fornecedor) VALUES ('Fornecedor 2', 'fornecedor2@example.com', '98765432109876', '7654321', '123456789', 'Razão Social 2', 2);
 
-INSERT INTO produto_fornecedor (quantidade, fornecedor_prod) VALUES (50, 1);
-INSERT INTO produto_fornecedor (quantidade, fornecedor_prod) VALUES (30, 2);
-
-INSERT INTO produto (nome, preco, peso, url_imagem, tamanho, cod_barras, cor, marca, descricao, prod_fornecedor, categoria) VALUES ('Sofá de Couro', 1500.00, 50.0, 'sofa_couro.png', '200x100x80', '123456789012', 'Marrom', 'Marca A', 'Sofá confortável de couro', 1, 1);
-INSERT INTO produto (nome, preco, peso, url_imagem, tamanho, cod_barras, cor, marca, descricao, prod_fornecedor, categoria) VALUES ('Mesa de Jantar', 499.99, 30.0, 'mesa_jantar.png', '160x90x75', '987654321098', 'Madeira', 'Marca B', 'Mesa de jantar elegante', 2, 2);
-
-INSERT INTO estoque (quantidade, prod_estoque) VALUES (50, 1);
-INSERT INTO estoque (quantidade, prod_estoque) VALUES (30, 2);
-
 INSERT INTO gerente (salario, status, pessoa_gerente) VALUES (5000.00, 'Ativo', 1);
 INSERT INTO gerente (salario, status, pessoa_gerente) VALUES (6000.00, 'Ativo', 2);
 
@@ -192,15 +204,54 @@ INSERT INTO cliente (pessoa_cliente) VALUES (2);
 INSERT INTO funcionario (salario, pessoa_funcionario) VALUES (3000.00, 1);
 INSERT INTO funcionario (salario, pessoa_funcionario) VALUES (3500.00, 2);
 
-INSERT INTO item_pedido (quantidade, preco, produto_pedido) VALUES (2, 1500.00, 1);
-INSERT INTO item_pedido (quantidade, preco, produto_pedido) VALUES (1, 499.99, 2);
+INSERT INTO produto_fornecedor (quantidade, fornecedor_prod) VALUES (50, 1);
+INSERT INTO produto_fornecedor (quantidade, fornecedor_prod) VALUES (30, 2);
 
-INSERT INTO pedido (valor_total, data_entrega, cpf, data, contato, item_ped, funcionario_pedido, categoria_pedido) VALUES (3000.00, '2024-04-15', '12345678901', '2024-04-10', 'cliente1@example.com', 1, 1, 1);
-INSERT INTO pedido (valor_total, data_entrega, cpf, data, contato, item_ped, funcionario_pedido, categoria_pedido) VALUES (499.99, '2024-04-20', '98765432109', '2024-04-11', 'cliente2@example.com', 2, 2, 2);
+INSERT INTO produto (nome, preco, peso, url_imagem, tamanho, cod_barras, cor, marca, descricao, prod_fornecedor, categoria) VALUES ('Sofá de Couro', 1500.00, 50.0, 'sofa_couro.png', '200x100x80', '123456789012', 'Marrom', 'Marca A', 'Sofá confortável de couro', 1, 1);
+INSERT INTO produto (nome, preco, peso, url_imagem, tamanho, cod_barras, cor, marca, descricao, prod_fornecedor, categoria) VALUES ('Mesa de Jantar', 499.99, 30.0, 'mesa_jantar.png', '160x90x75', '987654321098', 'Madeira', 'Marca B', 'Mesa de jantar elegante', 2, 2);
 
-INSERT INTO status_pedido (status_pedido, pedido_numero) VALUES ('Em processamento', 1);
-INSERT INTO status_pedido (status_pedido, pedido_numero) VALUES ('Enviado', 2);
+INSERT INTO estoque (quantidade, prod_estoque) VALUES (20, 1);
+INSERT INTO estoque (quantidade, prod_estoque) VALUES (15, 2);
 
-INSERT INTO status (descricao) VALUES ('Ativo');
-INSERT INTO status (descricao) VALUES ('Inativo');
+INSERT INTO pedido (valor_total, data_entrega, cpf, data, contato, funcionario_pedido) VALUES (2000.00, '2024-06-15', '12345678901', '2024-05-31', 'João - 123456789', 1);
 
+INSERT INTO item_pedido (quantidade, preco, produto_pedido, pedido_id) VALUES (1, 1200.00, 1, 1);
+INSERT INTO item_pedido (quantidade, preco, produto_pedido, pedido_id) VALUES (1, 800.00, 2, 1);
+
+INSERT INTO status_pedido (status_pedido, pedido_numero) VALUES (1, 1);
+
+
+
+select * from estoque
+
+select * from pedido
+
+select * from item_pedido
+
+select * from status_pedido
+
+
+
+
+SELECT *,
+    p.nome AS nome_produto,
+    p.descricao AS descricao_produto,
+    c.nome AS nome_cliente,
+    p.url_imagem AS imagem_produto,
+    p.marca AS marca_produto,
+    p.cor AS cor_produto,
+    p.tamanho AS tamanho_produto
+FROM 
+    item_pedido AS ip
+JOIN 
+    produto AS p ON ip.produto_pedido = p.id_produto
+JOIN 
+    pedido AS pe ON ip.pedido_id = pe.id_pedido
+JOIN 
+    cliente AS cli ON pe.funcionario_pedido = cli.id_cliente
+JOIN 
+    pessoa AS c ON cli.pessoa_cliente = c.id_pessoa
+JOIN 
+    categoria AS pd ON p.categoria = pd.id_categoria
+WHERE 
+    c.id_pessoa = 1;

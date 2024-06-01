@@ -11,11 +11,17 @@ package javafx.domain;
  */
 public class StatusPedido {
     private int idStatusPedido;
-    private String statusPedido;
+    private int statusPedido;
+    private int pedido;
 
-    public StatusPedido(int idStatusPedido, String statusPedido) {
+    public StatusPedido(int idStatusPedido, int statusPedido, int pedido) {
         this.idStatusPedido = idStatusPedido;
         this.statusPedido = statusPedido;
+        this.pedido = pedido;
+    }
+
+
+    public StatusPedido() {
     }
 
     public int getIdStatusPedido() {
@@ -26,11 +32,19 @@ public class StatusPedido {
         this.idStatusPedido = idStatusPedido;
     }
 
-    public String getstatusPedido() {
+    public int getstatusPedido() {
         return statusPedido;
     }
 
-    public void setStatusPedido(String statusPedido) {
+    public void setStatusPedido(int statusPedido) {
         this.statusPedido = statusPedido;
+    }
+    
+       public int getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(int pedido) {
+        this.pedido = pedido;
     }
 }

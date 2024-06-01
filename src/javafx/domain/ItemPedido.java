@@ -24,6 +24,10 @@ public class ItemPedido {
         this.quantidade = quantidade;
     }
 
+    public ItemPedido() {
+        
+    }
+
     public int getIdItemPedido() {
         return idItemPedido;
     }
