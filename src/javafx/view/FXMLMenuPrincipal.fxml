@@ -33,7 +33,7 @@
                               <Font name="Segoe UI Light" size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="buttonMonitor" mnemonicParsing="false" prefHeight="37.0" prefWidth="183.0" style="-fx-background-color: #FFFF;" styleClass="button-menu" stylesheets="@../../css/css.css" text="MONITOR DE PEDIDOS">
+                        <Button fx:id="buttonMonitor" mnemonicParsing="false" onAction="#handleMenuItemMonitorarPedido" prefHeight="37.0" prefWidth="183.0" style="-fx-background-color: #FFFF;" styleClass="button-menu" stylesheets="@../../css/css.css" text="MONITOR DE PEDIDOS">
                            <font>
                               <Font name="Segoe UI Light" size="16.0" />
                            </font>
@@ -53,10 +53,15 @@
                                     <MenuItem fx:id="menuItemProduto" mnemonicParsing="false" onAction="#handleMenuItemProduto" styleClass="menu-bar" text="Produto" />
 
                                     <MenuItem fx:id="menuItemCliente" mnemonicParsing="false" onAction="#handleMenuItemCadastroCliente" styleClass="menu-bar" text="Cliente" />
+                                    <MenuItem fx:id="menuItemFornecedor" mnemonicParsing="false" onAction="#handleMenuItemCadastroFornecedor" styleClass="menu-bar" text="Fornecedor" />
 
                                  </items>
                             </Menu>
-                            <Menu fx:id="menuRegistrarPedido" mnemonicParsing="false" text="RELATÓRIO" />
+                            <Menu fx:id="menuRegistrarPedido" mnemonicParsing="false" text="RELATÓRIO">
+                                 <items>
+                                    <MenuItem fx:id="relatorioUm" mnemonicParsing="false" styleClass="menu-bar" text="Relatorio UM" />
+                                    <MenuItem fx:id="relatorioUm1" mnemonicParsing="false" styleClass="menu-bar" text="Relatorio Dois" />
+                                 </items></Menu>
                           </menus>
                         </MenuBar>
                         <Pane prefHeight="41.0" prefWidth="13.0" style="-fx-background-color: #FFFFFF;" />

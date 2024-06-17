@@ -108,7 +108,7 @@ public class FXMLTelaFuncionarioController implements Initializable {
             carregarTableViewFuncionarios();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Por favor, escolha um funcionario na Tabela!");
+            alert.setContentText("Por favor, escolha um cliente na Tabela!");
             alert.show();
         }
     }
@@ -126,7 +126,7 @@ public class FXMLTelaFuncionarioController implements Initializable {
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Por favor, escolha um funcionario na Tabela!");
+            alert.setContentText("Por favor, escolha um cliente na Tabela!");
             alert.show();
         }
     }
@@ -138,7 +138,7 @@ public class FXMLTelaFuncionarioController implements Initializable {
         AnchorPane page = (AnchorPane) loader.load();
 
         Stage dialogStage = new Stage();
-        dialogStage.setTitle("Cadastro de Funcionarios");
+        dialogStage.setTitle("Cadastro de Clientes");
          //dialogStage.initStyle(StageStyle.UNDECORATED);
 
         Scene scene = new Scene(page);

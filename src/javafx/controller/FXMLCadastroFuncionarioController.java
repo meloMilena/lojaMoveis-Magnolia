@@ -13,6 +13,7 @@ import javafx.dao.EnderecoDAO;
 import javafx.domain.Funcionario;
 import javafx.dao.FuncionarioDAO;
 import javafx.dao.PessoaDAO;
+import javafx.domain.Cliente;
 import javafx.domain.Endereco;
 import javafx.domain.Pessoa;
 import javafx.fxml.FXML;

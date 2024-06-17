@@ -45,6 +45,7 @@ public class ClienteDAO {
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, cliente.getIdCliente());
+            stmt.setInt(2, cliente.getPessoa().getIdPessoa());
             stmt.execute();
             return true;
         } catch (SQLException ex) {
@@ -80,8 +81,8 @@ public class ClienteDAO {
                 int idCliente = rs.getInt("id_cliente");
                 int idPessoa = rs.getInt("id_pessoa");
                 String nome = rs.getString("nome");
-                String email = rs.getString("email");
                 String cpf = rs.getString("cpf");
+                String email = rs.getString("email");           
                 String telefone = rs.getString("telefone");
                 int idEndereco = rs.getInt("id_endereco");
                 String cep = rs.getString("cep");
@@ -92,7 +93,7 @@ public class ClienteDAO {
 
                 Endereco endereco = new Endereco(idEndereco, cep, bairro, rua, numero, complemento);
 
-                Cliente cliente = new Cliente(idPessoa, nome, email, cpf, telefone, idCliente, endereco);
+                Cliente cliente = new Cliente(idPessoa, nome, cpf, email, telefone, idCliente, endereco);
 
                 clientes.add(cliente);
             }

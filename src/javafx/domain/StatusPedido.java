@@ -18,6 +18,10 @@ public class StatusPedido {
         this.statusPedido = statusPedido;
     }
 
+    public StatusPedido() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getIdStatusPedido() {
         return idStatusPedido;
     }
