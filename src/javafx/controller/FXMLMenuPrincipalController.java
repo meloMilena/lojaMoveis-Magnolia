@@ -137,9 +137,6 @@ public class FXMLMenuPrincipalController implements Initializable {
         AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLTelaCliente.fxml"));
         anchorPaneCarregar.getChildren().setAll(a);
     }
-<<<<<<< HEAD
-=======
-    
     
     @FXML
     private void handleMenuItemCadastroFornecedor(ActionEvent event) throws IOException {
@@ -153,5 +150,4 @@ public class FXMLMenuPrincipalController implements Initializable {
         anchorPaneCarregar.getChildren().setAll(a);
     }
             
->>>>>>> 3babcb7ac39e5117b7b02c3bce8fe017920b29a1
 }
