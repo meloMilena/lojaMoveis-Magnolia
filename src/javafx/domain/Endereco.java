@@ -16,6 +16,7 @@ public class Endereco {
     private String rua;
     private int numero;
     private String complemento;
+    private Pessoa pessoa;
 
      public Endereco(){
      }
@@ -28,6 +29,15 @@ public class Endereco {
         this.numero = numero;
         this.complemento = complemento;
     }
+    
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+    
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
 
     public int getId() {
         return id;

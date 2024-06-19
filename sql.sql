@@ -156,6 +156,23 @@ CREATE TABLE status_pedido (
 
 
 
+-- CREATE OR REPLACE FUNCTION atualizar_estoque()
+-- RETURNS TRIGGER AS $$
+-- BEGIN
+--     UPDATE estoque
+--     SET quantidade = quantidade - NEW.quantidade
+--     WHERE prod_estoque = NEW.produto_pedido;
+--     RETURN NEW;
+-- END;
+-- $$ LANGUAGE plpgsql;
+
+-- CREATE TRIGGER trigger_atualizar_estoque
+-- AFTER INSERT ON item_pedido
+-- FOR EACH ROW
+-- EXECUTE FUNCTION atualizar_estoque();
+
+
+
 CREATE OR REPLACE FUNCTION atualizar_estoque()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -170,6 +187,7 @@ CREATE TRIGGER trigger_atualizar_estoque
 AFTER INSERT ON item_pedido
 FOR EACH ROW
 EXECUTE FUNCTION atualizar_estoque();
+
 
 
 

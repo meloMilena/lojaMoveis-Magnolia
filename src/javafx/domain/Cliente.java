@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javafx.domain;
 
 public class Cliente {
@@ -17,17 +12,26 @@ public class Cliente {
 
     public Cliente(int idPessoa, String nome, String email, String cpf, String telefone, int idCliente,
             Endereco endereco) {
-        this.pessoa = new Pessoa(idPessoa, nome, email, cpf, telefone, endereco);
-        this.idCliente = idCliente;   
+        this.pessoa = new Pessoa(idPessoa, nome, email, cpf, telefone, endereco); // Criar Pessoa sem o objeto Endereco aqui
+        this.idPessoa = idPessoa; // Atribuir o idPessoa
+        this.idCliente = idCliente;
+        this.endereco = endereco; // Atribuir o endereco passado por parâmetro
     }
-
 
     public Pessoa getPessoa() {
         return pessoa;
     }
 
-    public int getIdPessoa() {
-        return idPessoa;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public Endereco getEndereco() {
@@ -38,12 +42,12 @@ public class Cliente {
         this.endereco = endereco;
     }
 
+    public int getIdPessoa() {
+        return idPessoa;
+    }
+
     public void setIdPessoa(int idPessoa) {
         this.idPessoa = idPessoa;
-    }
-    
-    public void setPessoa(Pessoa pessoa) {;
-        this.pessoa = pessoa;
     }
 
     public String getNome() {
@@ -76,13 +80,5 @@ public class Cliente {
 
     public void setTelefone(String telefone) {
         pessoa.setTelefone(telefone);
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
     }
 }

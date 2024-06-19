@@ -130,7 +130,7 @@ private void handleButtonAdicionar() {
         
         System.out.println(quantidadeEstoque);
         if (quantidadeEstoque >= quantidade) { // Verifica se a quantidade do estoque é suficiente
-            registrarPedidoController.adicionarProdutoNaTabela(produtoSelecionado);
+            registrarPedidoController.adicionarProdutoNaTabela(produtoSelecionado); // Adiciona o produto na tabela do pedido
             buttonConfirmarClicked = true;
             dialogStage.close();
         } else {
@@ -140,6 +140,7 @@ private void handleButtonAdicionar() {
         exibirAlerta("Nenhum produto selecionado", "Por favor, selecione um produto e informe a quantidade.");
     }
 }
+
 
 
 

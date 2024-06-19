@@ -184,30 +184,30 @@ public class FXMLRegistrarPedidoController implements Initializable {
         dialogStage.showAndWait();
     }
 
-    @FXML
-    private void buscarClientePorCPF() {
-        String cpf = textFieldCPF.getText();
-        clienteDAO.setConnection(connection);
-        Cliente cliente = clienteDAO.buscarPorCPF(cpf);
-        if (cliente != null) {
-            textFieldContato.setText(cliente.getTelefone());
-            textFieldNome.setText(cliente.getNome());
-            Endereco endereco = cliente.getEndereco();
-            if (endereco != null) {
-                textFieldCEP.setText(endereco.getCep());
-                textFieldRua.setText(endereco.getRua());
-                textFieldNumero.setText(String.valueOf(endereco.getNumero()));
-                textFieldBairro.setText(endereco.getBairro());
-                textFieldComplemento.setText(endereco.getComplemento());
-            }
-        } else {
-            textFieldNome.setText("");
-            textFieldRua.setText("");
-            textFieldNumero.setText("");
-            textFieldBairro.setText("");
-            textFieldComplemento.setText("");
+@FXML
+private void buscarClientePorCPF() {
+    String cpf = textFieldCPF.getText();
+    clienteDAO.setConnection(connection);
+    Cliente cliente = clienteDAO.buscarPorCPF(cpf);
+    if (cliente != null) {
+        textFieldContato.setText(cliente.getTelefone());
+        textFieldNome.setText(cliente.getNome());
+        Endereco endereco = cliente.getEndereco();
+        if (endereco != null) {
+            textFieldCEP.setText(endereco.getCep());
+            textFieldRua.setText(endereco.getRua());
+            textFieldNumero.setText(String.valueOf(endereco.getNumero()));
+            textFieldBairro.setText(endereco.getBairro());
+            textFieldComplemento.setText(endereco.getComplemento());
         }
+    } else {
+        textFieldNome.setText("");
+        textFieldRua.setText("");
+        textFieldNumero.setText("");
+        textFieldBairro.setText("");
+        textFieldComplemento.setText("");
     }
+}
 
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
@@ -279,16 +279,31 @@ private void exibirErro(String titulo, String mensagem) {
 
     
        
-
-
 public void adicionarProdutoNaTabela(Produto produto) {
     if (observableListProdutos == null) {
         observableListProdutos = FXCollections.observableArrayList();
         tableViewProdutos.setItems(observableListProdutos);
     }
+
+    // Verifica se o produto já está na tabela
+    for (Produto p : observableListProdutos) {
+        if (p.getIdProduto() == produto.getIdProduto()) { // Usar == para comparação de ints
+            exibirAlerta("Produto já adicionado", "O produto " + produto.getNome() + " já está na lista.");
+            return; // Não adiciona o produto se já estiver na tabela
+        }
+    }
+
     observableListProdutos.add(produto);
     carregarTableViewProdutos(observableListProdutos); // Carrega os dados na tabela
     calcularTotalProdutos(); // Calcula o total após adicionar o produto
+}
+
+private void exibirAlerta(String titulo, String mensagem) {
+    Alert alert = new Alert(Alert.AlertType.WARNING);
+    alert.setTitle(titulo);
+    alert.setHeaderText(null);
+    alert.setContentText(mensagem);
+    alert.showAndWait();
 }
 
 @FXML

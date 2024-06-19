@@ -103,7 +103,7 @@ public class ClienteDAO {
         return clientes;
     }
     
-    public Cliente buscarPorCPF(String cpf) {
+public Cliente buscarPorCPF(String cpf) {
     String sql = "SELECT * "
             + "FROM endereco AS e "
             + "JOIN pessoa AS p ON e.id_endereco = p.endereco_pessoa "
@@ -127,8 +127,11 @@ public class ClienteDAO {
             int numero = rs.getInt("numero");
             String complemento = rs.getString("complemento");
 
+            // Criar o objeto Endereco com os dados obtidos do ResultSet
             Endereco endereco = new Endereco(idEndereco, cep, bairro, rua, numero, complemento);
 
+            System.out.println(endereco);
+            // Criar e retornar o objeto Cliente com os dados obtidos do ResultSet
             return new Cliente(idPessoa, nome, email, cpf, telefone, idCliente, endereco);
         }
     } catch (SQLException ex) {
