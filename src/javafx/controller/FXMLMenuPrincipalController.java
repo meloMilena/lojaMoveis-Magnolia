@@ -45,6 +45,8 @@ public class FXMLMenuPrincipalController implements Initializable {
     @FXML
     private MenuItem menuItemCliente;
     @FXML
+    private MenuItem menuItemFornecedor;
+    @FXML
     private AnchorPane anchorPane;
 
     private double xOffset = 0;
@@ -135,4 +137,21 @@ public class FXMLMenuPrincipalController implements Initializable {
         AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLTelaCliente.fxml"));
         anchorPaneCarregar.getChildren().setAll(a);
     }
+<<<<<<< HEAD
+=======
+    
+    
+    @FXML
+    private void handleMenuItemCadastroFornecedor(ActionEvent event) throws IOException {
+        AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLTelaFornecedor.fxml"));
+        anchorPaneCarregar.getChildren().setAll(a);
+    }
+    
+    @FXML
+    private void handleMenuItemMonitorarPedido(ActionEvent event) throws IOException {
+        AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLMonitorarPedido.fxml"));
+        anchorPaneCarregar.getChildren().setAll(a);
+    }
+            
+>>>>>>> 3babcb7ac39e5117b7b02c3bce8fe017920b29a1
 }

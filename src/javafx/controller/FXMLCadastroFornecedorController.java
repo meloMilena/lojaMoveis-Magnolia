@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javafx.controller;
 
 import java.net.URL;
 import java.sql.Connection;
-import java.text.ParseException;
 import java.util.ResourceBundle;
-import javafx.dao.ClienteDAO;
 import javafx.dao.EnderecoDAO;
-import javafx.dao.PessoaDAO;
-import javafx.domain.Cliente;
+import javafx.dao.FornecedorDAO;
 import javafx.domain.Endereco;
-import javafx.domain.Pessoa;
-import javafx.event.ActionEvent;
+import javafx.domain.Fornecedor;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.model.database.Database;
@@ -25,21 +16,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author Usuário
- */
-public class FXMLCadastroClienteController implements Initializable {
+public class FXMLCadastroFornecedorController implements Initializable {
 
     @FXML
     private TextField textFieldNome;
     @FXML
-    private TextField textFieldCpf;
+    private TextField textFieldCNAE;
     @FXML
     private TextField textFieldEmail;
     @FXML
     private TextField textFieldTelefone;
+    @FXML
+    private TextField textFieldRazaoSocial;
+    @FXML
+    private TextField textFieldCNPJ;
     @FXML
     private TextField textFieldCep;
     @FXML
@@ -51,8 +41,6 @@ public class FXMLCadastroClienteController implements Initializable {
     @FXML
     private TextField textFieldComplemento;
     @FXML
-    private Button buttonSalvar1;
-    @FXML
     private Button buttonSalvar;
 
     private Stage dialogStage;
@@ -60,14 +48,13 @@ public class FXMLCadastroClienteController implements Initializable {
     private final Connection connection = database.conectar();
     private boolean buttonConfirmarClicked = false;
 
-    private final ClienteDAO clienteDAO = new ClienteDAO();
-    private final PessoaDAO pessoaDAO = new PessoaDAO();
+    private final FornecedorDAO fornecedorDAO = new FornecedorDAO();
     private final EnderecoDAO enderecoDAO = new EnderecoDAO();
 
-    private Cliente cliente;
-    private Pessoa pessoa;
+    private Fornecedor fornecedor;
     private Endereco endereco;
 
+    
     public Stage getDialogStage() {
         return dialogStage;
     }
@@ -78,34 +65,36 @@ public class FXMLCadastroClienteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        clienteDAO.setConnection(connection);
-        pessoaDAO.setConnection(connection);
+        fornecedorDAO.setConnection(connection);
         enderecoDAO.setConnection(connection);
     }
-
-    public void setCliente(Cliente cliente, Pessoa pessoa, Endereco endereco) {
-        this.cliente = cliente;
-        this.pessoa = pessoa;
+    
+   public void setFornecedor(Fornecedor fornecedor, Endereco endereco) {
+        this.fornecedor = fornecedor;
         this.endereco = endereco;
 
-        this.textFieldNome.setText(pessoa.getNome());
-        this.textFieldCpf.setText(pessoa.getCpf());
-        this.textFieldEmail.setText(pessoa.getEmail());
-        this.textFieldTelefone.setText(pessoa.getTelefone());
+        this.textFieldNome.setText(fornecedor.getNome());
+        this.textFieldCNAE.setText(fornecedor.getCnae());
+        this.textFieldTelefone.setText(fornecedor.getTelefone());
+        this.textFieldEmail.setText(fornecedor.getEmail());
+        this.textFieldRazaoSocial.setText(fornecedor.getRazaoSocial());
+        this.textFieldCNPJ.setText(fornecedor.getCnpj());
         this.textFieldCep.setText(endereco.getCep());
-        this.textFieldComplemento.setText(endereco.getComplemento());
+        this.textFieldBairro.setText(endereco.getBairro());
         this.textFieldRua.setText(endereco.getRua());
         this.textFieldNumero.setText(String.valueOf(endereco.getNumero()));
-        this.textFieldBairro.setText(endereco.getBairro());
+        this.textFieldComplemento.setText(endereco.getComplemento());
     }
 
     public boolean isButtonConfirmarClicked() {
         return buttonConfirmarClicked;
     }
+    
 
     @FXML
-    public void handleButtonConfirmar() throws ParseException {
+    public void handleButtonConfirmar() {
         if (validarEntradaDeDados()) {
+            endereco = new Endereco();
             endereco.setCep(textFieldCep.getText());
             endereco.setBairro(textFieldBairro.getText());
             endereco.setRua(textFieldRua.getText());
@@ -115,20 +104,22 @@ public class FXMLCadastroClienteController implements Initializable {
             if (enderecoDAO.inserir(endereco)) {
                 int idEndereco = enderecoDAO.obterUltimoIdInserido();
 
-                pessoa.setNome(textFieldNome.getText());
-                pessoa.setCpf(textFieldCpf.getText());
-                pessoa.setEmail(textFieldEmail.getText());
-                pessoa.setTelefone(textFieldTelefone.getText());
-                pessoa.setIdEndereco(idEndereco);
+                fornecedor = new Fornecedor();
+                fornecedor.setNome(textFieldNome.getText());
+                fornecedor.setCnae(textFieldCNAE.getText());
+                fornecedor.setRazaoSocial(textFieldRazaoSocial.getText());
+                fornecedor.setCnpj(textFieldCNPJ.getText());
+                fornecedor.setEmail(textFieldEmail.getText());
+                fornecedor.setTelefone(textFieldTelefone.getText());
+                fornecedor.setIdEndereco(idEndereco);
 
-                if (pessoaDAO.inserir(pessoa)) {
-                    int idPessoa = pessoaDAO.obterUltimoIdInserido();
-
-                    cliente.setIdPessoa(idPessoa);
+                if (fornecedorDAO.inserir(fornecedor)) {
+                    int idFornecedor = fornecedorDAO.obterUltimoIdInserido();
+                    
                     buttonConfirmarClicked = true;
                     dialogStage.close();
                 } else {
-                    exibirErro("Falha ao inserir pessoa", "Ocorreu um erro ao inserir a pessoa. Por favor, tente novamente.");
+                    exibirErro("Falha ao inserir fornecedor", "Ocorreu um erro ao inserir o fornecedor. Por favor, tente novamente.");
                 }
             } else {
                 exibirErro("Falha ao inserir endereço", "Ocorreu um erro ao inserir o endereço. Por favor, tente novamente.");
@@ -150,20 +141,37 @@ public class FXMLCadastroClienteController implements Initializable {
         if (textFieldNome.getText() == null || textFieldNome.getText().isEmpty()) {
             errorMessage += "Nome inválido!\n";
         }
-        if (textFieldCpf.getText() == null || textFieldCpf.getText().isEmpty()) {
-            errorMessage += "CPF inválido!\n";
+        if (textFieldCNAE.getText() == null || textFieldCNAE.getText().isEmpty()) {
+            errorMessage += "CNAE inválido!\n";
+        }
+        if (textFieldEmail.getText() == null || textFieldEmail.getText().isEmpty()) {
+            errorMessage += "Email inválido!\n";
         }
         if (textFieldTelefone.getText() == null || textFieldTelefone.getText().isEmpty()) {
             errorMessage += "Telefone inválido!\n";
         }
-        if (textFieldEmail.getText() == null || textFieldEmail.getText().isEmpty()) {
-            errorMessage += "Email inválido!\n";
+        if (textFieldRazaoSocial.getText() == null || textFieldRazaoSocial.getText().isEmpty()) {
+            errorMessage += "Razão Social inválida!\n";
+        }
+        if (textFieldCNPJ.getText() == null || textFieldCNPJ.getText().isEmpty()) {
+            errorMessage += "CNPJ inválido!\n";
+        }
+        if (textFieldCep.getText() == null || textFieldCep.getText().isEmpty()) {
+            errorMessage += "CEP inválido!\n";
+        }
+        if (textFieldRua.getText() == null || textFieldRua.getText().isEmpty()) {
+            errorMessage += "Rua inválida!\n";
+        }
+        if (textFieldNumero.getText() == null || textFieldNumero.getText().isEmpty()) {
+            errorMessage += "Número inválido!\n";
+        }
+        if (textFieldBairro.getText() == null || textFieldBairro.getText().isEmpty()) {
+            errorMessage += "Bairro inválido!\n";
         }
 
         if (errorMessage.isEmpty()) {
             return true;
         } else {
-            // Mostrar a mensagem de erro
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro no cadastro");
             alert.setHeaderText("Campos inválidos, por favor, corrija...");

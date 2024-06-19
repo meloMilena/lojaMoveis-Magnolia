@@ -18,18 +18,19 @@ public class Fornecedor {
     private String telefone;
     private String razaoSocial;
     private Endereco endereco;
+    private int enderecoFornecedor;
     
     public Fornecedor() {
     }
 
-    public Fornecedor(int idFornecedor, String nome, String email, String cnpj, String cnae, String telefone, String razaoSocial, Endereco endereco) {
+    public Fornecedor(int idFornecedor, String nome, String cnae, String razaoSocial, String cnpj, String email, String telefone, Endereco endereco) {
         this.idFornecedor = idFornecedor;
         this.nome = nome;
-        this.email = email;
-        this.cnpj = cnpj;
         this.cnae = cnae;
-        this.telefone = telefone;
         this.razaoSocial = razaoSocial;
+        this.cnpj = cnpj;
+        this.email = email;
+        this.telefone = telefone;
         this.endereco = endereco;
     }
 
@@ -89,7 +90,16 @@ public class Fornecedor {
         this.razaoSocial = razaoSocial;
     }
     
-     public Endereco getEndereco() {
+    public int getIdEndereco() {
+        return enderecoFornecedor;
+    }
+
+    public void setIdEndereco(int enderecoFornecedor) {
+        this.enderecoFornecedor = enderecoFornecedor;
+    }
+
+    
+    public Endereco getEndereco() {
         return endereco;
     }
 

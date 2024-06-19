@@ -5,42 +5,45 @@
  */
 package javafx.domain;
 
-/**
- *
- * @author DevChefMio
- */
 public class Cliente {
-    private int idCliente;
     private Pessoa pessoa;
-
-    public Cliente(int idPessoa, String nome, String email, String cpf, String telefone, int idCliente,
-            Endereco endereco) {
-        this.idCliente = idCliente;
-        this.pessoa = new Pessoa(idPessoa, nome, email, cpf, telefone, endereco);
-    }
-
+    private int idCliente;
+    private Endereco endereco;
+    private int idPessoa;
+    
     public Cliente() {
        
     }
+
+    public Cliente(int idPessoa, String nome, String email, String cpf, String telefone, int idCliente,
+            Endereco endereco) {
+        this.pessoa = new Pessoa(idPessoa, nome, email, cpf, telefone, endereco);
+        this.idCliente = idCliente;   
+    }
+
 
     public Pessoa getPessoa() {
         return pessoa;
     }
 
     public int getIdPessoa() {
-        return pessoa.getIdPessoa();
+        return idPessoa;
     }
 
     public Endereco getEndereco() {
-        return pessoa.getEndereco();
+        return endereco;
     }
 
     public void setEndereco(Endereco endereco) {
-        pessoa.setEndereco(endereco);
+        this.endereco = endereco;
     }
 
     public void setIdPessoa(int idPessoa) {
-        pessoa.setIdPessoa(idPessoa);
+        this.idPessoa = idPessoa;
+    }
+    
+    public void setPessoa(Pessoa pessoa) {;
+        this.pessoa = pessoa;
     }
 
     public String getNome() {

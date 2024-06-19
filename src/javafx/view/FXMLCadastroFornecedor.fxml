@@ -10,14 +10,15 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="730.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.controller.FXMLCadastroClienteController">
+<AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="730.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.controller.FXMLCadastroFornecedorController">
    <children>
-      <GridPane layoutX="79.0" layoutY="52.0" prefHeight="206.0" prefWidth="572.0">
+      <GridPane layoutX="94.0" layoutY="26.0" prefHeight="251.0" prefWidth="542.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="282.0" minWidth="10.0" prefWidth="217.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="367.0" minWidth="10.0" prefWidth="306.0" />
          </columnConstraints>
          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -30,46 +31,66 @@
                   <Font name="Calibri" size="15.0" />
                </font>
             </TextField>
-            <Label prefHeight="17.0" prefWidth="218.0" text="Nome:">
+            <Label prefHeight="17.0" prefWidth="218.0" text="Nome da Empresa:">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="textFieldCpf" prefHeight="25.0" prefWidth="362.0" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="textFieldCNAE" prefHeight="25.0" prefWidth="362.0" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </TextField>
-            <Label text="CPF:" GridPane.rowIndex="1">
+            <Label text="CNAE" GridPane.rowIndex="1">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="textFieldEmail" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="textFieldEmail" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </TextField>
-            <Label text="E-mail:" GridPane.rowIndex="2">
+            <Label text="E-mail:" GridPane.rowIndex="4">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="textFieldTelefone" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="textFieldTelefone" prefHeight="2.0" prefWidth="283.0" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </TextField>
-            <Label text="Telefone:" GridPane.rowIndex="3">
+            <Label text="Telefone:" GridPane.rowIndex="5">
                <font>
                   <Font name="Calibri" size="15.0" />
                </font>
             </Label>
+            <Label text="Razão Social:" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldRazaoSocial" prefHeight="25.0" prefWidth="362.0" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </TextField>
+            <Label text="CNPJ" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldCNPJ" prefHeight="25.0" prefWidth="362.0" style="-fx-background-color: FFFFFF; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-color: D7D7D7;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </TextField>
          </children>
       </GridPane>
-      <Pane layoutX="46.0" layoutY="268.0" prefHeight="268.0" prefWidth="659.0" style="-fx-border-color: D7D7D7; -fx-border-radius: 8; -fx-background-color: FFFFFF;">
+      <Pane layoutX="41.0" layoutY="301.0" prefHeight="271.0" prefWidth="648.0" style="-fx-border-color: D7D7D7; -fx-border-radius: 8; -fx-background-color: FFFFFF;">
          <children>
-            <GridPane layoutX="87.0" layoutY="27.0" prefHeight="212.0" prefWidth="486.0">
+            <GridPane layoutX="87.0" layoutY="27.0" prefHeight="235.0" prefWidth="486.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="237.0" minWidth="10.0" prefWidth="134.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="352.0" />
@@ -141,7 +162,7 @@
             </Button>
          </children>
       </Pane>
-      <Button fx:id="buttonSalvar1" layoutX="443.0" layoutY="575.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="111.0" styleClass="button-cancelar" stylesheets="@../../css/css.css" text="Cancelar" />
-      <Button fx:id="buttonSalvar" graphicTextGap="0.0" layoutX="585.0" layoutY="576.0" mnemonicParsing="false" onAction="#handleButtonConfirmar" prefHeight="30.0" prefWidth="111.0" styleClass="button-salvar" stylesheets="@../../css/css.css" text="Salvar" />
+      <Button fx:id="buttonSalvar1" layoutX="436.0" layoutY="583.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="111.0" styleClass="button-cancelar" stylesheets="@../../css/css.css" text="Cancelar" />
+      <Button fx:id="buttonSalvar" graphicTextGap="0.0" layoutX="570.0" layoutY="584.0" mnemonicParsing="false" onAction="#handleButtonConfirmar" prefHeight="30.0" prefWidth="111.0" styleClass="button-salvar" stylesheets="@../../css/css.css" text="Salvar" />
    </children>
 </AnchorPane>
