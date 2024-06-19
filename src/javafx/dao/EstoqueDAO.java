@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.domain.Funcionario;
@@ -59,6 +61,27 @@ public class EstoqueDAO {
             return false;
         }
     }
+    
+public int listar(int idProduto) {
+    String query = "SELECT e.quantidade AS quantidade_estoque " +
+                   "FROM estoque e " +
+                   "WHERE e.prod_estoque = ?";
+
+    int quantidadeProduto = 0;
+    try {
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setInt(1, idProduto);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            quantidadeProduto = rs.getInt("quantidade_estoque");
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return quantidadeProduto;
+}
+
+    
 
   
 }

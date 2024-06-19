@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.dao.EstoqueDAO;
 import javafx.dao.ProdutoDAO;
 import javafx.domain.Produto;
 import javafx.fxml.FXML;
@@ -34,6 +35,8 @@ public class FXMLAdicionarProdutoController implements Initializable {
     private Produto produto;
     
     private final ProdutoDAO produtoDAO = new ProdutoDAO();
+    private final EstoqueDAO estoqueDAO = new EstoqueDAO();
+    
     
     private final Database database = DatabaseFactory.getDatabase("postgresql");
     private final Connection connection = database.conectar();
@@ -46,7 +49,8 @@ public class FXMLAdicionarProdutoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         produtoDAO.setConnection(connection);
-         
+        estoqueDAO.setConnection(connection);
+        
         listProduto = produtoDAO.listar();
         observableListProduto = FXCollections.observableArrayList(listProduto);
 
@@ -121,14 +125,24 @@ private void handleButtonAdicionar() {
     if (produtoSelecionado != null && !quantidadeText.isEmpty()) { // Verifica se o produto e a quantidade foram selecionados
         int quantidade = Integer.parseInt(quantidadeText); // Converte a quantidade para inteiro
         produtoSelecionado.setQuantidade(quantidade); // Define a quantidade no produto selecionado
-
-        registrarPedidoController.adicionarProdutoNaTabela(produtoSelecionado);
-        buttonConfirmarClicked = true;
-        dialogStage.close();
+        System.out.println(produtoSelecionado.getIdProduto());
+        int quantidadeEstoque = estoqueDAO.listar(produtoSelecionado.getIdProduto()); // Obtém a quantidade do estoque para o produto selecionado
+        
+        System.out.println(quantidadeEstoque);
+        if (quantidadeEstoque >= quantidade) { // Verifica se a quantidade do estoque é suficiente
+            registrarPedidoController.adicionarProdutoNaTabela(produtoSelecionado);
+            buttonConfirmarClicked = true;
+            dialogStage.close();
+        } else {
+            exibirAlerta("Estoque insuficiente", "O produto possui apenas " + quantidadeEstoque + " unidades em estoque.");
+        }
     } else {
         exibirAlerta("Nenhum produto selecionado", "Por favor, selecione um produto e informe a quantidade.");
     }
 }
+
+
+
 
 
     private void exibirAlerta(String titulo, String mensagem) {

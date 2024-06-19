@@ -122,11 +122,13 @@ public class ProdutoDAO {
     }
 
   public List<Produto> listar() {
-         String query = "SELECT *, f.nome AS nomefornecedor, c.nome AS nome_categoria, c.descricao AS descricao_categoria " +
+        String query = "SELECT *, f.nome AS nomefornecedor, c.nome AS nome_categoria, c.descricao AS descricao_categoria, e.quantidade AS quantidade_estoque " +
                "FROM produto p " +
                "INNER JOIN produto_fornecedor pf ON p.prod_fornecedor = pf.id_produto_fornecedor " +
                "INNER JOIN fornecedor f ON pf.fornecedor_prod = f.id_fornecedor " +
-               "INNER JOIN categoria c ON p.categoria = c.id_categoria";
+               "INNER JOIN categoria c ON p.categoria = c.id_categoria " +
+               "INNER JOIN estoque e ON p.id_produto = e.prod_estoque";
+
          
     List<Produto> produtos = new ArrayList<>();
     try {
@@ -144,6 +146,7 @@ public class ProdutoDAO {
             produto.setCor(rs.getString("cor"));
             produto.setMarca(rs.getString("marca"));
             produto.setDescricao(rs.getString("descricao"));
+            produto.setQuantidade(rs.getInt("quantidade_estoque"));
 
             ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor(); 
             produtoFornecedor.setQuantidade(rs.getInt("quantidade"));

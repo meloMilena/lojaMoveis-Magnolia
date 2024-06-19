@@ -15,6 +15,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.dao.ClienteDAO;
+import javafx.dao.EstoqueDAO;
 import javafx.dao.FuncionarioDAO;
 import javafx.dao.ItemPedidoDAO;
 import javafx.dao.PedidoDAO;
@@ -22,6 +23,7 @@ import javafx.dao.ProdutoDAO;
 import javafx.dao.StatusPedidoDAO;
 import javafx.domain.Cliente;
 import javafx.domain.Endereco;
+import javafx.domain.Estoque;
 import javafx.domain.Funcionario;
 import javafx.domain.ItemPedido;
 import javafx.domain.Pedido;
@@ -99,6 +101,7 @@ public class FXMLRegistrarPedidoController implements Initializable {
     private final FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
     private final ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
     private final StatusPedidoDAO statusPedidoDAO = new StatusPedidoDAO();
+    private final EstoqueDAO estoqueDAO = new EstoqueDAO();
     
     private final Database database = DatabaseFactory.getDatabase("postgresql");
     private final Connection connection = database.conectar();
@@ -107,6 +110,7 @@ public class FXMLRegistrarPedidoController implements Initializable {
     private Pedido pedido;
     private ItemPedido itemPedido;
     private StatusPedido statusPedido;
+    private Estoque estoque;
     
     private ObservableList<Produto> observableListProdutos;
     private List<Produto> listProduto;
@@ -126,6 +130,7 @@ public class FXMLRegistrarPedidoController implements Initializable {
         funcionarioDAO.setConnection(connection);
         itemPedidoDAO.setConnection(connection);
         statusPedidoDAO.setConnection(connection);
+        estoqueDAO.setConnection(connection);
         
         pedido = new Pedido();
 

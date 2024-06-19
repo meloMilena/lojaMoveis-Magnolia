@@ -240,7 +240,8 @@ SELECT *,
     p.url_imagem AS imagem_produto,
     p.marca AS marca_produto,
     p.cor AS cor_produto,
-    p.tamanho AS tamanho_produto
+    p.tamanho AS tamanho_produto,
+    e.quantidade AS quantidade_estoque
 FROM 
     item_pedido AS ip
 JOIN 
@@ -253,5 +254,8 @@ JOIN
     pessoa AS c ON cli.pessoa_cliente = c.id_pessoa
 JOIN 
     categoria AS pd ON p.categoria = pd.id_categoria
+JOIN 
+    estoque AS e ON p.id_produto = e.prod_estoque
 WHERE 
     c.id_pessoa = 1;
+
