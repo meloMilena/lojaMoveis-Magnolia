@@ -59,8 +59,7 @@
                             </Menu>
                             <Menu fx:id="menuRegistrarPedido" mnemonicParsing="false" text="RELATÓRIO">
                                  <items>
-                                    <MenuItem fx:id="relatorioUm" mnemonicParsing="false" styleClass="menu-bar" text="Relatorio UM" />
-                                    <MenuItem fx:id="relatorioUm1" mnemonicParsing="false" styleClass="menu-bar" text="Relatorio Dois" />
+                                    <MenuItem fx:id="relatorioUm" mnemonicParsing="false" onAction="#handleMenuItemRelatorioPedido" styleClass="menu-bar" text="Relatorio Total Pedidos" />
                                  </items></Menu>
                           </menus>
                         </MenuBar>

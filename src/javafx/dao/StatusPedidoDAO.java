@@ -54,44 +54,37 @@ public class StatusPedidoDAO {
         }
     }
 
-    public boolean remover(StatusPedido statusPedido) {
-        String sql = "DELETE FROM status_pedido WHERE id_pedido=?";
-        try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, statusPedido.getPedido());
-            stmt.execute();
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(StatusPedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-    }
-}
- /*   public List<StatusPedido> listar() {;
-        String sql = "SELECT sp.id_status_pedido, sp.descricao, p.id_pedido, p.data_pedido, p.valor_total, " +
-                     "c.id_cliente, c.nome AS nome_cliente " +
-                     "FROM status_pedido sp " +
-                     "INNER JOIN pedido p ON sp.id_status_pedido = p.status_pedido " +
-                     "INNER JOIN cliente c ON p.cliente_pedido = c.id_cliente";
+    public List<StatusPedido> listar() {
+        String sql = "SELECT "
+                + "    pe.id_pedido, "
+                + "    sp.id_status_pedido, "
+                + "    s.descricao AS estado_pedido, "
+                + "    pe.cpf AS cpf_cliente "
+                + "FROM "
+                + "    status_pedido sp "
+                + "INNER JOIN "
+                + "    status s ON sp.status_pedido = s.id_status "
+                + "INNER JOIN "
+                + "    pedido pe ON sp.pedido_numero = pe.id_pedido";
 
         List<StatusPedido> statusPedidos = new ArrayList<>();
-        try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
+                int idPedido = rs.getInt("id_pedido");
+                int idStatusPedido = rs.getInt("id_status_pedido");
+                String estadoPedido = rs.getString("estado_pedido");
+                String cpfCliente = rs.getString("cpf_cliente");
+
                 StatusPedido statusPedido = new StatusPedido();
-                statusPedido.setIdStatusPedido(rs.getInt("id_status_pedido"));
+                statusPedido.setIdStatusPedido(idStatusPedido);
+                statusPedido.setEstadoPedido(estadoPedido);
 
-                pedido.setIdPedido(rs.getInt("id_pedido"));
-                pedido.setDataPedido(rs.getDate("data_pedido").toLocalDate());
-                pedido.setValorTotal(rs.getDouble("valor_total"));
+                Pedido pedido = new Pedido();
+                pedido.setIdPedido(idPedido);
+                pedido.setCpf(cpfCliente); // Define o CPF do cliente diretamente do pedido
 
-                Cliente cliente = new Cliente();
-                cliente.setIdCliente(rs.getInt("id_cliente"));
-                cliente.setNome(rs.getString("nome_cliente"));
-
-                pedido.setCliente(cliente);
-                statusPedido.setPedido(pedido);
+                statusPedido.setPedidos(pedido); // Armazena o pedido no status do pedido
 
                 statusPedidos.add(statusPedido);
             }
@@ -100,5 +93,5 @@ public class StatusPedidoDAO {
         }
         return statusPedidos;
     }
-}*/
 
+}

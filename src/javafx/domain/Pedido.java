@@ -81,8 +81,7 @@ public class Pedido {
         return data;
     }
 
-  
-
+ 
     public Produto getProduto() {
         return produto;
     }
