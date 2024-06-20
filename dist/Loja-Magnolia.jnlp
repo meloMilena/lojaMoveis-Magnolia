@@ -8,7 +8,11 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="Loja-Magnolia.jar" size="2194705" download="eager" />
+=======
+    <jar href="Loja-Magnolia.jar" size="3508301" download="eager" />
+>>>>>>> 636999da2de076203dfd5ce2d50328495a9dbddf
     <jar href="lib\asm-3.2.jar" size="43401" download="eager" />
     <jar href="lib\commons-beanutils-1.8.3.jar" size="232019" download="eager" />
     <jar href="lib\commons-collections-3.2.1.jar" size="575389" download="eager" />

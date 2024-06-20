@@ -51,6 +51,8 @@ public class FXMLMenuPrincipalController implements Initializable {
 
     private double xOffset = 0;
     private double yOffset = 0;
+    @FXML
+    private MenuItem relatorioUm;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -143,6 +145,13 @@ private void handleMenuItemCatalogo() {
     @FXML
     private void handleMenuItemMonitorarPedido(ActionEvent event) throws IOException {
         AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLMonitorarPedido.fxml"));
+        anchorPaneCarregar.getChildren().setAll(a);
+    }
+    
+        
+    @FXML
+    private void handleMenuItemRelatorioPedido(ActionEvent event) throws IOException {
+        AnchorPane a = FXMLLoader.load(getClass().getResource("/javafx/view/FXMLRelatorioTotalPedidos.fxml"));
         anchorPaneCarregar.getChildren().setAll(a);
     }
             

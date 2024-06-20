@@ -43,6 +43,7 @@
                               <Font name="Segoe UI Light" size="16.0" />
                            </font>
                         </Button>
+<<<<<<< HEAD
                         <Pane prefHeight="66.0" prefWidth="211.0" style="-fx-background-color: #FFFFFF;">
                            <children>
                               <MenuBar layoutY="15.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="213.0" style="-fx-font-size: 16px;" stylesheets="@../../css/css.css">
@@ -71,6 +72,29 @@
                                  </cursor>
                               </MenuBar>
                            </children></Pane>
+=======
+                        <MenuBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="41.0" prefWidth="215.0" style="-fx-font-size: 16px;" stylesheets="@../../css/css.css">
+                          <menus>
+                            <Menu fx:id="menuCadastro" mnemonicParsing="false" text="CADASTROS">
+                                 <items>
+                                    <MenuItem fx:id="menuItemFuncionario" mnemonicParsing="false" onAction="#handleMenuItemCadastroFuncionario" styleClass="menu-bar" text="Funcionario" />
+                                    <MenuItem fx:id="menuItemGerente" mnemonicParsing="false" onAction="#handleMenuItemCadastroGerente" styleClass="menu-bar" text="Gerente" />
+
+                                    <MenuItem fx:id="menuItemProduto" mnemonicParsing="false" onAction="#handleMenuItemProduto" styleClass="menu-bar" text="Produto" />
+
+                                    <MenuItem fx:id="menuItemCliente" mnemonicParsing="false" onAction="#handleMenuItemCadastroCliente" styleClass="menu-bar" text="Cliente" />
+                                    <MenuItem fx:id="menuItemFornecedor" mnemonicParsing="false" onAction="#handleMenuItemCadastroFornecedor" styleClass="menu-bar" text="Fornecedor" />
+
+                                 </items>
+                            </Menu>
+                            <Menu fx:id="menuRegistrarPedido" mnemonicParsing="false" text="RELATÓRIO">
+                                 <items>
+                                    <MenuItem fx:id="relatorioUm" mnemonicParsing="false" onAction="#handleMenuItemRelatorioPedido" styleClass="menu-bar" text="Relatorio Total Pedidos" />
+                                 </items></Menu>
+                          </menus>
+                        </MenuBar>
+                        <Pane prefHeight="41.0" prefWidth="13.0" style="-fx-background-color: #FFFFFF;" />
+>>>>>>> 636999da2de076203dfd5ce2d50328495a9dbddf
                      </children>
                   </HBox>
                </children>

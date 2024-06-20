@@ -43,7 +43,7 @@
                   <Font name="Calibri" size="15.0" />
                </font>
             </Label>
-            <ComboBox prefHeight="31.0" prefWidth="312.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox prefHeight="31.0" prefWidth="312.0" style="-fx-background-color: #FFFFFF; -fx-border-color: D7D7D7; -fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Status Pedido" GridPane.rowIndex="2">
                <font>
                   <Font name="Calibri" size="15.0" />
