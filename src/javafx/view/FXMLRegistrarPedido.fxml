@@ -133,7 +133,7 @@
             <Label fx:id="labelTotal" prefHeight="21.0" prefWidth="574.0" styleClass="label-visualizar" stylesheets="@../../css/css.css" text="R$0,00" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="494.0" layoutY="852.0" mnemonicParsing="false" styleClass="button-cancelar" stylesheets="@../../css/css.css" text="Cancelar" />
+      <Button layoutX="494.0" layoutY="852.0" mnemonicParsing="false" onAction="#handleButtonCancelar" styleClass="button-cancelar" stylesheets="@../../css/css.css" text="Cancelar" />
       <Button fx:id="handleButtonConfirmar" layoutX="593.0" layoutY="853.0" mnemonicParsing="false" onAction="#handleButtonConfirmar" styleClass="button-salvar" stylesheets="@../../css/css.css" text="Confirmar" />
 
    </children>

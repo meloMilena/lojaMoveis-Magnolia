@@ -10,7 +10,7 @@ public class Cliente {
        
     }
 
-    public Cliente(int idPessoa, String nome, String email, String cpf, String telefone, int idCliente,
+    public Cliente(int idPessoa, String nome, String cpf, String email, String telefone, int idCliente,
             Endereco endereco) {
         this.pessoa = new Pessoa(idPessoa, nome, email, cpf, telefone, endereco); // Criar Pessoa sem o objeto Endereco aqui
         this.idPessoa = idPessoa; // Atribuir o idPessoa

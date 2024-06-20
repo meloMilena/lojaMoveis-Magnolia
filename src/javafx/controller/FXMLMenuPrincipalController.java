@@ -88,21 +88,17 @@ public class FXMLMenuPrincipalController implements Initializable {
     }
     
     @FXML
-    private void handleMenuItemCatalogo() {
-       try {
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafx/view/FXMLCatalogo.fxml"));
-           AnchorPane a = loader.load();
-           FXMLCatalogoController catalogoController = loader.getController();
-           catalogoController.initialize(null, null); // Manually initialize the controller
-           anchorPaneCarregar.getChildren().setAll(a);
-       } catch (IOException ex) {
-           ex.printStackTrace();
-           // Handle the exception accordingly, e.g., show an error message to the user
-       } catch (Exception e) {
-           e.printStackTrace();
-           // Handle any other unexpected exceptions
-       }
-    }
+private void handleMenuItemCatalogo() {
+   try {
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafx/view/FXMLCatalogo.fxml"));
+       AnchorPane a = loader.load();
+       anchorPaneCarregar.getChildren().setAll(a);
+   } catch (IOException ex) {
+       ex.printStackTrace();
+       // Handle the exception accordingly, e.g., show an error message to the user
+   }
+}
+
     
     @FXML
     private void handleRegistraPedido() throws IOException {

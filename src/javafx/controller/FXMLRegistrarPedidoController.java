@@ -119,8 +119,16 @@ public class FXMLRegistrarPedidoController implements Initializable {
     private List<Funcionario> listFuncionario;
     @FXML
     private Button handleButtonConfirmar;
-    
+    private Stage dialogStage;
   
+    public Stage getDialogStage() {
+        return dialogStage;
+    }
+
+
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -219,7 +227,11 @@ private void buscarClientePorCPF() {
         this.dataDataEntrega.setValue(pedido.getDataEntrega());
     }
 
-
+ @FXML
+    public void handleButtonCancelar() {
+        getDialogStage().close();
+    }
+    
 
 public void handleButtonConfirmar() {
     pedido.setData(dataDataAtual.getValue());

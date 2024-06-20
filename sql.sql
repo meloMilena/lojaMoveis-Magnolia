@@ -250,7 +250,6 @@ select * from status_pedido
 
 
 
-
 SELECT *,
     p.nome AS nome_produto,
     p.descricao AS descricao_produto,
@@ -259,6 +258,7 @@ SELECT *,
     p.marca AS marca_produto,
     p.cor AS cor_produto,
     p.tamanho AS tamanho_produto,
+    ip.quantidade AS quantidade_pedido,
     e.quantidade AS quantidade_estoque
 FROM 
     item_pedido AS ip
@@ -276,4 +276,12 @@ JOIN
     estoque AS e ON p.id_produto = e.prod_estoque
 WHERE 
     c.id_pessoa = 1;
+
+
+
+SELECT *
+FROM endereco AS e
+JOIN pessoa AS p ON e.id_endereco = p.endereco_pessoa
+JOIN cliente AS c ON p.id_pessoa = c.pessoa_cliente
+WHERE p.cpf = '12345678901';
 
